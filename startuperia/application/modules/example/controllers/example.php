@@ -12,7 +12,7 @@ class Example extends CI_Controller {
 	}
 	
 	function view_general(){
-    $content = "general";
+	  $content['example'] = "general";
 	  $data['extra_heading'] = "<script src='".base_url()."js/modules/example/example.js' type='text/javascript'></script>\n";
 		$data['content'] = $this->load->view('ajax/example', $content, TRUE);
 		

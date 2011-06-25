@@ -1,1 +1,2 @@
 ajax
+<?php print $example;?>
