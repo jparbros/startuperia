@@ -68,9 +68,6 @@
 							<li><a href="sample_reports.html">Dos</a></li>			
 							<li><a href="sample_faq.html">Tre</a></li>				
 							<li><a href="sample_invoice.html">Cuatro</a></li>	
-							<li><a href="sample_calendar.html">Calendar</a></li>		
-							<li><a href="sample_people.html">People Listing</a></li>	
-							<li><a href="sample_details.html">Support Request</a></li>	
 						</ul>
 					</div>						
 				</li>
