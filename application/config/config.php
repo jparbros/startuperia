@@ -16,6 +16,10 @@
 */
 $config['base_url'] = "http://".$_SERVER['HTTP_HOST'];
 $config['base_url'] .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
+
+$config['modules_locations'] = array(
+        APPPATH.'modules/' => '../modules/',
+    );
 /*
 |--------------------------------------------------------------------------
 | Index File
