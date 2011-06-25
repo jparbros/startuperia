@@ -14,8 +14,8 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'startuperia.dev';
-
+$config['base_url'] = "http://".$_SERVER['HTTP_HOST'];
+$config['base_url'] .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -329,7 +329,9 @@ $config['compress_output'] = FALSE;
 |
 */
 $config['time_reference'] = 'local';
-
+$config['modules_locations'] = array(
+        APPPATH.'modules/' => '../modules/',
+    );
 
 /*
 |--------------------------------------------------------------------------
