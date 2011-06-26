@@ -97,7 +97,8 @@
 	
 </div> <!-- #wrapper -->
 
-<script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<!--script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script-->
+<script  type="text/javascript" src="<?php echo base_url(); ?>js/jquery/jquery.1.4.2.min.js"></script>
 <script  type="text/javascript" src="<?php echo base_url(); ?>js/slate/slate.js"></script>
 <script  type="text/javascript" src="<?php echo base_url(); ?>js/slate/slate.portlet.js"></script>
 <script  type="text/javascript" src="<?php echo base_url(); ?>js/plugin.js"></script>
