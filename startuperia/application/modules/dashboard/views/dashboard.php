@@ -12,7 +12,7 @@
 			<table cellspacing="0" class="info_table">
 				<tbody>
 					<tr>
-						<td class="value">425</td>
+						<td class="value"><?php print $companies_owned[0]->startups;?></td>
 						<td class="full">Companies Owned</td>
 					</tr>
 					<tr>
@@ -146,51 +146,32 @@
 								<th>Name</th>
 								<th>Symbol</th>
 								<th>Last Price</th>
-								<th>Change</th>
+								<!--th>Change</th-->
 								<th>Shares</th>
 								<th>Cost Basis</th>
 								<th>Market Value</th>
 								<th>Gain ($)</th>
 								<th>Gain (%)</th>
-								<th>Day's Gain'</th>
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach($accepted_orders->result() as $order) { ?>
+							<?php foreach($portfolio->result() as $order) { ?>
 							  <tr>
+							  <?php 
+							    $market_value = $order->vps * $order->value;
+							    $gain_money = $market_value-$order->value;
+							    $gain_por = $market_value/$order->value;
+							  ?>
 							  <td><?php print $order->name;?></td>
 							  <td><?php print $order->symbol;?></td>
-							  <td><?php print $order->name;?></td>
-							  <td><?php print $order->name;?></td>
-							  <td><?php print $order->quantity;?></td>
-							  <td><?php print $order->name;?></td>
-							  <td><?php print $order->name;?></td>
+							  <td><?php print $order->vps;?></td>
+							  <td><?php print $order->total_shares;?></td>
+							  <td><?php print $order->value;?></td>
+							  <td><?php print $market_value;?></td>
+							  <td><?php print $gain_money;?></td>
+							  <td><?php print $gain_por;?></td>
 							  </tr>
 							<?php } ?>
-							<!--tr class="even gradeC">
-								<td>Square</td>
-								<td>SQ</td>
-								<td>$4.00</td>
-								<td class="gain center">$0.50</td>
-								<td class="center">10</td>
-								<td class="center">$30.00</td>
-								<td class="center">$40.00</td>
-								<td class="gain center">$10.00</td>
-								<td class="gain center">33.3%</td>
-								<td class="gain center">$5.00</td>
-							</tr>
-							<tr class="odd gradeX">
-								<td>Twitter</td>
-								<td>T</td>
-								<td>$2.00</td>
-								<td class="loss right">-$0.50</td>
-								<td class="right">20</td>
-								<td class="right">$80.00</td>
-								<td class="right">$40.00</td>
-								<td class="loss right">-$40.00</td>
-								<td class="loss right">-50.0%</td>
-								<td class="gain right">-$10.00</td>
-							</tr-->
 						</tbody>
 					</table>
 				</div>
@@ -213,20 +194,20 @@
 								<th>Action</th>
 								<th>Shares</th>
 								<th>Order Price</th>
-								<th>Last Price</th>
 								<th>Order Total</th>
 							</tr>
 						</thead>
 						<tbody>
-						  <?php foreach($pending_orders->result() as $order) { ?>
-						    <tr>
+						  <?php foreach($pending_orders->result() as $order) { 
+						    $order_total = $order->quantity * $order->value;
+						  ?>
+						    <tr>asa
 							  <td><?php print $order->name;?></td>
 							  <td><?php print $order->symbol;?></td>
-							  <td><?php print $order->name;?></td>
-							  <td><?php print $order->name;?></td>
+							  <td><?php print $order->type;?></td>
+							  <td><?php print $order->value;?></td>
 							  <td><?php print $order->quantity;?></td>
-							  <td><?php print $order->name;?></td>
-							  <td><?php print $order->name;?></td>
+							  <td><?php print $order_total;?></td>
 							  </tr>
 							<?php } ?>
 						</tbody>
