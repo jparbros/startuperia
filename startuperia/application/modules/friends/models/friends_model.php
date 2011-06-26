@@ -32,6 +32,7 @@ class Friends_model extends CI_Model {
       $this->db->from('users');
       $this->db->join('stocks', 'stocks.users_id = users.id');
       $this->db->join('user_profiles', 'user_profiles.user_id = users.id');
+      $this->db->group_by('users.id');
       
       $query = $this->db->get();
       return $query;
