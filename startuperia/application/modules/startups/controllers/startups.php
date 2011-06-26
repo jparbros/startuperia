@@ -9,16 +9,18 @@ class Startups extends CI_Controller {
 
   function index(){
     $this->load->library('pagination');
+    
+    $content['startups'] = $this->Startup->all_startups();    
 
-    $config['base_url'] = 'http://example.com/index.php/test/page/';
-    $config['total_rows'] = '200';
-    $config['per_page'] = '20'; 
+    $config['base_url'] = base_url() . 'startups/';
+    $config['total_rows'] = $this->Startup->all_startups_size;
+    $config['per_page'] = $this->Startup->page_lenght; 
 
     $this->pagination->initialize($config); 
 
-    echo $this->pagination->create_links();
+    $content['pagination_links'] = $this->pagination->create_links();
     
-    $content['startups'] = $this->Startup->all_startups();
+    
     $data['content'] = $this->load->view('index', $content, TRUE);
     $this->load->view('main_template', $data);
   }
