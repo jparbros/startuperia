@@ -32,17 +32,22 @@ class Startups extends CI_Controller {
   }
   
   function show(){
-    print 'SHOW';
     $url = $_SERVER['REQUEST_URI'];
     $params = explode('/',$url);
-    $this->Startup->get_startup($params[2]);
+    $this->Startup->get_startup($params[3]);
     $content['startup'] = $this->Startup;
     $data['content'] = $this->load->view('show', $content, TRUE);
     $this->load->view('main_template', $data);
   }
   
-  function action_get_all_startups() {
-    $this->Startup->get_all_startups();
+  function search() {
+    $url = $_SERVER['REQUEST_URI'];
+    $params = explode('/',$url);
+    if($this->Startup->search($params[3])) {
+      redirect(base_url() . 'startups/show/'.$params[3]);
+    } else {
+      
+    }
   }
   
 }
