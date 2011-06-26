@@ -47,7 +47,7 @@
 			<ul class="mega-container mega-grey">
 	
 				<li class="mega mega-current">
-					<a href="index2.html" class="mega-link">Portfolio</a>	
+					<a href="/dashboard" class="mega-link">Portfolio</a>	
 				</li>
 				
 				<li class="mega">
