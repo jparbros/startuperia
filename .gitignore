@@ -4,3 +4,5 @@
 .project
 .settings/
 *.bak
+startuperia/application/logs/*.php
+startuperia/captcha/*.jpg
