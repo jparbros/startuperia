@@ -26,7 +26,7 @@ class Startups extends CI_Controller {
   function show(){
     $url = $_SERVER['REQUEST_URI'];
     $params = explode('/',$url);
-    $this->Startup->get_startup($params[3]);
+    $this->Startup->get_startup($params[2]);
     $content['startup'] = $this->Startup;
     $data['content'] = $this->load->view('show', $content, TRUE);
     $this->load->view('main_template', $data);
