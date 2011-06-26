@@ -23,8 +23,7 @@ class Startup extends CI_Model {
     $this->startup_data = $this->http_get(self::companies_url . $startup_name . ".js");
     $row = $this->exist($startup_name);
     if (!$row) {
-      $images = $this->image;
-      $this->db->insert('startups', array('name' => $this->name,'permalink' => $this->permalink, 'logo' => self::image_url . $images['available_sizes'][0][1])); 
+      $this->db->insert('startups', array('name' => $this->name,'permalink' => $this->permalink, 'logo' => self::image_url . $this->image['available_sizes'][0][1])); 
     }
   }
   
@@ -61,6 +60,10 @@ class Startup extends CI_Model {
   public function __get($name) {
     if (array_key_exists($name, $this->startup_data)) {
       return $this->startup_data[$name];
+    } elseif ($name == 'funding'){
+      return $this->funding();
+    } elseif ($name == 'long_description'){
+      return $this->long_description();
     } else {
       return parent::__get($name);
     }
@@ -74,6 +77,23 @@ class Startup extends CI_Model {
         $this->get_startup($column['permalink']);
       }
     }
+  }
+  
+  public function funding() {
+    $funding = 0;
+    foreach($this->funding_rounds as $funding_round) {
+      $funding += $funding_round['raised_amount'];
+    }
+    return $funding;
+  }
+  
+  public function long_description() {
+    $overviews = explode('</p>', $this->overview);
+    $overview = '';
+    while(strlen($overview) <= 800) {
+      $overview .=  array_shift($overviews);
+    }
+    return $overview;
   }
   
 }
