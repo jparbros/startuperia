@@ -47,15 +47,15 @@
 			<ul class="mega-container mega-grey">
 	
 				<li class="mega mega-current">
-					<a href="index2.html" class="mega-link">Portfolio</a>	
+					<a href="<?php echo base_url()?>dashboard" class="mega-link">Portfolio</a>	
 				</li>
 				
 				<li class="mega">
-					<a href="index2.html" class="mega-link">Trade</a>	
+					<a href="<?php echo base_url()?>startups" class="mega-link">StarUps</a>	
 				</li>
 				
 				<li class="mega">
-					<a href="<?php echo base_url()?>/friends" class="mega-link">Users</a>	
+					<a href="<?php echo base_url()?>friends" class="mega-link">Friends</a>	
 				</li>
 		
 				<li class="mega">				
@@ -83,7 +83,7 @@
 	
 	<div id="footer">
 		
-		<p>Copyright &copy; 2010 <a href="javascript:;">MadeByAmp</a>, all rights reserved.</p>
+		<p>Copyright &copy; 2011 <a href="javascript:;">playVC</a>, all rights reserved.</p>
 		
 	</div> <!-- #footer -->
 	
@@ -94,7 +94,7 @@
 <script  type="text/javascript" src="<?php echo base_url(); ?>js/slate/slate.portlet.js"></script>
 <script  type="text/javascript" src="<?php echo base_url(); ?>js/plugin.js"></script>
 <script  type="text/javascript" src="<?php echo base_url(); ?>js/application.js"></script>
-<script  type="text/javascript" src="<?php echo base_url(); ?>js/base.js"></script>
+<script  type="text/javascript" src="<?php echo base_url(); ?>js/highcharts.js"></script>
 </body>
 
 </html>

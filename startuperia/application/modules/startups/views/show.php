@@ -38,37 +38,12 @@
 
       <div class="portlet-header">
         <h4>Trends</h4>
-
-        <ul class="portlet-tab-nav">
-          <li class="portlet-tab-nav-active"><a href="#tab1" rel="tooltip" title="Stock values in the last 5 months.">Value </a></li>        
-        </ul>
       </div> <!-- .portlet-header -->
 
       <div class="portlet-content">        
-        <div id="tab1" class="portlet-tab-content portlet-tab-content-active">
-          <table class="stats" title="area" width="100%" cellpadding="0" cellspacing="0">
-            <caption>Portfolio Value/Change</caption>
-            <thead>
-              <tr>
-                <td>&nbsp;</td>
-                <? foreach(array_keys($startup->avg_last_five_months()) as $month) : ?>
-                <th><? echo $month?></th>
-                <? endforeach ?>
-              </tr>
-            </thead>
+          
+			<div id="stock-chart"></div>
 
-            <tbody>
-              <tr>
-                <th>SQ</th>
-                <? foreach($startup->avg_last_five_months() as $value) : ?>
-                <td><? echo $value?></td>
-                <? endforeach ?>
-              </tr>
-
-            </tbody>
-          </table>
-
-        </div> <!-- .portlet-tab-content -->
       </div> <!-- .portlet-content -->      
     </div> <!-- .portlet -->
 
@@ -175,3 +150,29 @@
   <div class="xbreak"></div> <!-- .xbreak -->
 
 </div> <!-- #content -->
+
+<script type="text/javascript" charset="utf-8">
+	$(function() {
+		new Highcharts.Chart({
+			chart: {
+				renderTo: "stock-chart"
+			},
+			title: {
+				text: "Price"
+			},
+			xAxis: {
+				type: "datetime"
+			},
+			yAxis: {
+				title: {
+					text: "Credits"
+				}
+			},
+			series: [{
+				pointStart : <?php echo time()-(4*7*24*60*60); ?> * 1000,
+				pointInterval: 10*60*1000,
+				data: [1, 2, 5, 4, 4]
+			}]
+		});
+	});
+</script>
