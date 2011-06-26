@@ -1037,3 +1037,7 @@ h2.accordion_panel
 	overflow: hidden;
 	clear: both;
 }
+
+.floatLeft {
+  float: left;
+}
