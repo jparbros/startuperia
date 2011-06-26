@@ -146,33 +146,14 @@
     </div> <!-- .portlet-content -->      
   </div> <!-- .portlet -->
   
-  
   <div class="xbreak"></div> <!-- .xbreak -->
 
 </div> <!-- #content -->
-
+<script type="text/javascript" charset="utf-8" src="<?php echo base_url(); ?>js/charts.js"></script>
 <script type="text/javascript" charset="utf-8">
-	$(function() {
-		new Highcharts.Chart({
-			chart: {
-				renderTo: "stock-chart"
-			},
-			title: {
-				text: "Price"
-			},
-			xAxis: {
-				type: "datetime"
-			},
-			yAxis: {
-				title: {
-					text: "Credits"
-				}
-			},
-			series: [{
-				pointStart : <?php echo time()-(4*7*24*60*60); ?> * 1000,
-				pointInterval: 10*60*1000,
-				data: [1, 2, 5, 4, 4]
-			}]
-		});
-	});
+  <? $months = '["' .implode('","',array_keys($startup->avg_last_ten_days()) ) . '"]'?>
+  <? $avg_value = '[' .implode(',',$startup->avg_last_ten_days()) . ']'?>
+  $(document).ready(function(){
+    daily_charts(<? echo $months?> , <? echo $avg_value?>);
+  });
 </script>

@@ -62,10 +62,6 @@ class Startup extends CI_Model {
     return json_decode($respond, $decode);
   }
   
-  /*
-  /* Check if the startup is in DB
-  /* Return a false or the record if exist
-  */
   protected function exist($startup_name) {
     $query = $this->db->get_where('startups',array('permalink' => $startup_name));
     if ($query->num_rows() > 0) {
@@ -117,21 +113,21 @@ class Startup extends CI_Model {
     return $overview;
   }
   
-  public function month_everage($month, $year){
+  public function day_everage($day, $month, $year){
     $where = array(
       'startups_id =' => $this->id, 
-      'created >' => $year.'-'.$month.'-01 00:00:00', 
-      'created <=' => $year.'-'.$month.'-31 23:59:59');
+      'created >' => $year.'-'.$month.'-'.$day.' 00:00:00', 
+      'created <=' => $year.'-'.$month.'-'.$day.' 23:59:59');
     $this->db->where($where);
     $this->db->select_avg('value_per_share');
     $query = $this->db->get('values_history');
     return (is_null($query->row(0)->value_per_share))? 0 : $query->row(0)->value_per_share;
   }
   
-  public function avg_last_five_months() {
+  public function avg_last_ten_days() {
     $avgs = array();
-    for ($i = 1; $i <= 5; $i++) {
-      $avgs[date("F", strtotime("-".$i." month") )] = $this->month_everage(date("m", strtotime("-".$i." month") ), date("Y", strtotime("-".$i." month") ));
+    for ($i = 0; $i <= 9; $i++) {
+      $avgs[date("d/m", strtotime("-".$i." day") )] = $this->day_everage(date("d", strtotime("-".$i." day") ),date("m", strtotime("-".$i." day") ), date("Y", strtotime("-".$i." day") ));
     }
     return array_reverse($avgs);
   }

@@ -48,4 +48,10 @@ class Startups extends CI_Controller {
     }
   }
   
+  function get_all_startups() {
+    for ($i = 1; $i <= 1000; $i++) {
+      $this->Startup->all_startups($i*20);
+    }
+  }
+  
 }
