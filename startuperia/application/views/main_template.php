@@ -83,7 +83,7 @@
 			</ul>
 		</div> <!-- #nav -->
 
-		<div id="content">
+		<div id="content" class="xfluid">
 		  <?php echo $content; ?>
 		</div>
 	</div> <!-- #top -->
