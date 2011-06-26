@@ -10,11 +10,17 @@ class Startups extends CI_Controller {
   function index(){
     $this->load->library('pagination');
     
-    $content['startups'] = $this->Startup->all_startups();    
+    $url = $_SERVER['REQUEST_URI'];
+    $params = explode('=',$url);
+    if(empty($params[1])) {
+      $params[1] = 1;
+    }
+    $content['startups'] = $this->Startup->all_startups($params[1]);    
 
-    $config['base_url'] = base_url() . 'startups/';
+    $config['base_url'] = base_url() . 'startups?page';
     $config['total_rows'] = $this->Startup->all_startups_size;
     $config['per_page'] = $this->Startup->page_lenght; 
+    $config['page_query_string'] = TRUE;
 
     $this->pagination->initialize($config); 
 
@@ -26,6 +32,7 @@ class Startups extends CI_Controller {
   }
   
   function show(){
+    print 'SHOW';
     $url = $_SERVER['REQUEST_URI'];
     $params = explode('/',$url);
     $this->Startup->get_startup($params[2]);
