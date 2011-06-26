@@ -142,18 +142,18 @@ html[xmlns] .clearfix {
 -------------------------------------------------------------- */
 body
 {
-	background: #EFEFEF;
+	background: #D99A04;
 	font: 12px/1.7em arial,sans-serif;
 	min-height: 1063px;
 }
 
 #wrapper { width: 100%; min-width: 960px; margin: 0 auto 150px; }
 
-#header { background: #263849 url(../images/header_bg.png) repeat-x 0 0; width: 93%; height: 96px; margin: 0 auto; position: relative; }
+#header { background: #4B5970; width: 93%; height: 96px; margin: 0 auto; position: relative; }
 
 	#header h1
 	{
-		background: url(../images/logo.png) no-repeat 0 0;
+		background: url(../images/play_vc_logo_200px.png) no-repeat 0 0;
 		width: 200px;
 		height: 80px;
 		line-height: 500px;
@@ -201,7 +201,7 @@ body
 
 #nav 
 { 
-	background: #263849;
+	background: #4B5970;
 	width: 93%; 
 	height: 47px; 
 	
