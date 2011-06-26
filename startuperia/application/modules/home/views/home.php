@@ -2,7 +2,7 @@
 <html xmlns='http://www.w3.org/1999/xhtml'>
   <head>
     <title>
-      Sinatra Base
+      playVC
     </title>
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
     <script src='http://code.jquery.com/jquery-1.4.4.min.js' type='text/javascript'></script>
