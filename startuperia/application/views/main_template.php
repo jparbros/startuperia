@@ -75,8 +75,10 @@
 			</ul>
 			<div id="search">
 			    <form action="<?php print base_url();?>search/action/startups" method="post">
-			      <input type="text" name="q_startup" value="" id="q_startup">
-            <input type="submit" value="Continue &rarr;">
+			    <div class="field">
+					<input type="text" name="q_startup" value="" id="q_startup">
+				</div>
+            	<input type="submit" value="Startup Search &rarr;" class="btn btn-orange">
 			    </form>
 			</div>
 		</div> <!-- #nav -->
