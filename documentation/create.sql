@@ -13,13 +13,12 @@ DROP TABLE IF EXISTS `startuperia`.`startups` ;
 CREATE  TABLE IF NOT EXISTS `startuperia`.`startups` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
-  `permalink` VARCHAR(45) NOT NULL ,
-  `logo` VARCHAR(150) NOT NULL ,
   `symbol` VARCHAR(45) NOT NULL ,
-  `shares` INT NOT NULL DEFAULT 0 ,
-  `available_shares` INT NOT NULL DEFAULT 0 ,
-  `value_per_share` FLOAT NOT NULL DEFAULT 0 ,
+  `shares` INT NOT NULL DEFAULT 10000 ,
+  `available_shares` INT NOT NULL DEFAULT 10000 ,
+  `value_per_share` FLOAT NOT NULL DEFAULT 10 ,
   `funding` FLOAT NOT NULL DEFAULT 0 ,
+  `permalink` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -52,7 +51,6 @@ DROP TABLE IF EXISTS `startuperia`.`users` ;
 
 CREATE  TABLE IF NOT EXISTS `startuperia`.`users` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
-  `credits` FLOAT NOT NULL DEFAULT 0 ,
   `username` VARCHAR(50) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL ,
   `password` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL ,
   `email` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL ,
@@ -64,8 +62,8 @@ CREATE  TABLE IF NOT EXISTS `startuperia`.`users` (
   `new_email` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ,
   `new_email_key` VARCHAR(50) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ,
   `last_ip` VARCHAR(40) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL ,
-  `last_login` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `last_login` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' ,
+  `created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' ,
   `modified` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB
@@ -218,7 +216,7 @@ CREATE  TABLE IF NOT EXISTS `startuperia`.`user_profiles` (
   `user_id` INT(11) NOT NULL ,
   `country` VARCHAR(20) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ,
   `website` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ,
-  `credits` INT NOT NULL DEFAULT 0 ,
+  `credits` FLOAT NOT NULL DEFAULT 1000 ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8

@@ -15,5 +15,10 @@ class Home extends CI_Controller {
 	  $data['content'] = "";
 	  $this->load->view('home.php', $data);
 	}
+	
+    function view_market_summary() {
+      $data['content'] = $this->load->view('home/market_summary', array(), true);
+      $this->load->view('main_template', $data);
+    }
 }
 ?>

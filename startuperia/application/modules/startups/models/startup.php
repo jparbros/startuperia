@@ -11,6 +11,8 @@ class Startup extends CI_Model {
   
   protected $startup_data;
   protected $row;
+  public $all_startups_size;
+  public $page_lenght= self::page_lenght;
   
   function __construct($startup_name = null) {
     parent::__construct();
@@ -38,8 +40,13 @@ class Startup extends CI_Model {
     }
   }
   
-  public function all_startups() {
-    
+  public function all_startups($page = 1) {
+    $startups = array_slice($this->get_all_startups(), ($page * self::page_lenght), self::page_lenght);
+    $startups_return = array();
+    foreach($startups as $startup) {
+      $startups_return[] = new Startup($startup['permalink']);
+    }
+    return $startups_return;
   }
   
   protected function http_get($url, $decode = true) {
@@ -85,12 +92,8 @@ class Startup extends CI_Model {
   
   public function get_all_startups() {
     $startups = $this->http_get(self::list_entities_url . 'companies.js');
-    foreach($startups as $column) {
-      $row = $this->exist($column['permalink']);
-      if(!$row){
-        $this->get_startup($column['permalink']);
-      }
-    }
+    $this->all_startups_size = sizeof($startups);
+    return $startups;
   }
   
   public function funding() {
