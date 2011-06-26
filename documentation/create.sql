@@ -79,7 +79,7 @@ CREATE  TABLE IF NOT EXISTS `startuperia`.`orders` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `startups_id` INT UNSIGNED NOT NULL ,
   `users_id` INT(11) NOT NULL ,
-  `status` ENUM('pending', 'acepted', 'cancel') NOT NULL DEFAULT 'pending' ,
+  `status` ENUM('pending', 'accepted', 'cancel') NOT NULL DEFAULT 'pending' ,
   `type` ENUM('sell','buy') NOT NULL DEFAULT 'buy' ,
   `value` FLOAT NOT NULL ,
   `quantity` INT NOT NULL ,
