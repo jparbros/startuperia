@@ -18,7 +18,7 @@
         <div class="stat">
           
           <h4>Current Price</h4>
-          <span class="value">13.00<? #echo $startup->value_per_share ?></span>
+          <span class="value">$<? echo number_format($startup->value_per_share,2,'.',',') ?></span>
           
         </div>
         
@@ -26,7 +26,7 @@
 
           
           <h4>Today's Change</h4>
-          <span class="loss value">-$0.25</span>
+          <span class="loss value">$<? echo number_format($startup->todays_change,2,'.',',') ?></span>
           
         </div>
       </div>
@@ -40,8 +40,7 @@
         <h4>Trends</h4>
 
         <ul class="portlet-tab-nav">
-          <li class="portlet-tab-nav-active"><a href="#tab1" rel="tooltip" title="Visitors over last 48 hours.">Value </a></li>        
-          <li class=""><a href="#tab2" rel="tooltip" title="Sales over last 48 hours.">Volume </a></li>
+          <li class="portlet-tab-nav-active"><a href="#tab1" rel="tooltip" title="Stock values in the last 5 months.">Value </a></li>        
         </ul>
       </div> <!-- .portlet-header -->
 
@@ -52,65 +51,23 @@
             <thead>
               <tr>
                 <td>&nbsp;</td>
-                <th>January</th>
-                <th>February</th>
-                <th>March</th>
-                <th>April</th>
-                <th>May</th>
+                <? foreach(array_keys($startup->avg_last_five_months()) as $month) : ?>
+                <th><? echo $month?></th>
+                <? endforeach ?>
               </tr>
             </thead>
 
             <tbody>
               <tr>
                 <th>SQ</th>
-                <td>12</td>
-                <td>15</td>
-                <td>13</td>
-                <td>11</td>
-                <td>13</td>
+                <? foreach($startup->avg_last_five_months() as $value) : ?>
+                <td><? echo $value?></td>
+                <? endforeach ?>
               </tr>
 
             </tbody>
           </table>
 
-        </div> <!-- .portlet-tab-content -->
-
-        <div id="tab2" class="portlet-tab-content">
-
-          <table class="stats" title="bar" width="100%" cellpadding="0" cellspacing="0">
-            <caption>2009/2010 Sales by industry (Million)</caption>
-            <thead>
-              <tr>
-                <td>&nbsp;</td>
-                <th>Banking</th>
-                <th>Beauty</th>
-                <th>Insurance</th>
-                <th>Internet</th>
-                <th>Media</th>
-              </tr>
-
-            </thead>
-
-            <tbody>
-              <tr>
-                <th>2009</th>
-                <td>5</td>
-                <td>6</td>
-                <td>4</td>
-                <td>7</td>
-                <td>9</td>
-              </tr>
-
-              <tr>
-                <th>2010</th>
-                <td>12</td>
-                <td>15</td>
-                <td>13</td>
-                <td>11</td>
-                <td>13</td>
-              </tr>              
-            </tbody>
-          </table>
         </div> <!-- .portlet-tab-content -->
       </div> <!-- .portlet-content -->      
     </div> <!-- .portlet -->

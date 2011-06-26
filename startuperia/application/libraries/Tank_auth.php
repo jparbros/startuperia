@@ -71,6 +71,7 @@ class Tank_auth
 						$this->ci->session->set_userdata(array(
 								'user_id'	=> $user->id,
 								'username'	=> $user->username,
+								'email'     => $user->email,
 								'status'	=> ($user->activated == 1) ? STATUS_ACTIVATED : STATUS_NOT_ACTIVATED,
 						));
 
@@ -147,6 +148,16 @@ class Tank_auth
 	function get_username()
 	{
 		return $this->ci->session->userdata('username');
+	}
+	
+	/**
+	 * Get username
+	 *
+	 * @return	string
+	 */
+	function get_usermail()
+	{
+		return $this->ci->session->userdata('email');
 	}
 
 	/**

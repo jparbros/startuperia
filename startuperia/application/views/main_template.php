@@ -5,23 +5,15 @@
 
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<title>Startuperia</title>	
-	
+	<title>playVC</title>	
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/screen.css" type="text/css" media="screen" title="no title" charset="utf-8" />	
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/plugin.css" type="text/css" media="screen" title="no title" charset="utf-8" />	
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/custom.css" type="text/css" media="screen" title="no title" charset="utf-8" />		
-	
-	<style type="text/css" media="screen">
-		
-	</style>
-
 </head>
 
 <body>
-	
-<div id="wrapper" class="clearfix">
-	
-	<div id="top">
+  <div id="wrapper" class="clearfix">
+	 <div id="top">
 		<div id="header">
 			<h1><a href="<?php echo base_url() ?>">playVC</a></h1>
 			
@@ -29,7 +21,7 @@
 				<?php  if($this->tank_auth->is_logged_in()): ?>
     				<h4>Welcome <?php echo $this->tank_auth->get_username();?></h4>
     				<p><a href="./auth/logout" title="Logout">Logout</a></p>
-    				<img src="./images/avatar.jpg" alt="avatar" />
+    				<img src="http://www.gravatar.com/avatar/<?php echo md5(strtolower($this->tank_auth->get_usermail()))?>?s=65&d=<?php echo urlencode(base_url()."images/avatar.jpg")?>" alt="avatar" />
 				<?php else: ?> 
   					<form action="<?php echo base_url() ?>/auth/login" method="post" accept-charset="utf-8">
   						<div class="field"><label for="login">Email or login</label>
@@ -63,7 +55,7 @@
 				</li>
 				
 				<li class="mega">
-					<a href="index2.html" class="mega-link">Friends</a>	
+					<a href="<?php echo base_url()?>/friends" class="mega-link">Users</a>	
 				</li>
 		
 				<li class="mega">				
