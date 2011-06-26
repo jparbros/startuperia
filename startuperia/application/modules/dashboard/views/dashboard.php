@@ -44,7 +44,7 @@
 					  foreach($portfolio->result() as $order) { 
 						    $market_value = $order->vps * $order->value;
 						    $gain_money += $market_value-$order->value;
-						    $gain_por = $market_value/$order->value;
+						    $gain_full = $market_value/$order->value;
 					  } ?>
 						<td class="value"><?php print ($gain_money)? $gain_money : 0;?></td>
 						<td class="full">Gain ($)</td>
