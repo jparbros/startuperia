@@ -46,7 +46,7 @@
 	
 			<ul class="mega-container mega-grey">
 	
-				<li class="mega mega-current">
+				<li class="mega">
 					<a href="<?php echo base_url()?>dashboard" class="mega-link">Portfolio</a>	
 				</li>
 				
