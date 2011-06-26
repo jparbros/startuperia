@@ -1,3 +1,4 @@
+<?php if(!defined('CMD')) : ?>
 <html>
 <head>
 <title>404 Page Not Found</title>
@@ -32,3 +33,6 @@ margin:				0 0 4px 0;
 	</div>
 </body>
 </html>
+<?php else: ?>
+	<?php echo $heading; ?>: "<?php echo $message; ?>"
+<?php endif;?>

@@ -52,7 +52,7 @@
 	
 			<ul class="mega-container mega-grey">
 	
-				<li class="mega mega-current">
+				<li class="mega">
 					<a href="<?php echo base_url()?>dashboard" class="mega-link">Portfolio</a>	
 				</li>
 				
@@ -64,20 +64,7 @@
 					<a href="<?php echo base_url()?>friends" class="mega-link">Friends</a>	
 				</li>
 		
-				<li class="mega">				
-					<a href="javascript:;" class="mega-tab">
-						Settings
-					</a>
-					
-					<div class="mega-content mega-menu ">
-						<ul>
-							<li><a href="sample_gallery.html">Una</a></li>
-							<li><a href="sample_reports.html">Dos</a></li>			
-							<li><a href="sample_faq.html">Tre</a></li>				
-							<li><a href="sample_invoice.html">Cuatro</a></li>	
-						</ul>
-					</div>						
-				</li>
+			
 			</ul>
 			<div id="search">
 			    <form action="<?php print base_url();?>search/startups" method="post">
@@ -86,6 +73,9 @@
 			    </form>
 			</div>
 		</div> <!-- #nav -->
+		<?php if($__message = $this->session->flashdata('message')): ?>
+			<div class="message"><?php echo $__message?></div>
+		<?php endif; ?>
 
 		<div id="content" class="xfluid">
 		  <?php echo $content; ?>
@@ -95,7 +85,7 @@
 	
 	<div id="footer">
 		
-		<p>Copyright &copy; 2011 <a href="javascript:;">playVC</a>, all rights reserved.</p>
+		<p>Copyright &copy; 2011 <a href="javascript:;">playVC</a>, all rights reserved. All information gathered from <a href="www.crunchbase.com">CrunchBase</a></p>
 		
 	</div> <!-- #footer -->
 	

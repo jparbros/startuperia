@@ -32,7 +32,6 @@ class Startup extends CI_Model {
         'permalink' => $this->permalink, 
         'logo' => self::image_url . $this->image['available_sizes'][0][1], 
         'funding' => $this->funding(),
-        'value_per_share' => $this->calculate_price(),
         'shares' => self::initial_shares,
         'available_shares' => self::initial_shares
       )); 

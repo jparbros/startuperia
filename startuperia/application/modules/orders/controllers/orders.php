@@ -18,7 +18,7 @@ class Orders extends CI_Controller {
 	  $startup = strtolower($this->orders_model->buy());
 		if ($startup)
 		{
-		  redirect('/startups/'.$startup);
+		  redirect('/startups/show/'.$startup);
     }
     
 	}
