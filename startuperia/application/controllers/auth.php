@@ -16,8 +16,9 @@ class Auth extends CI_Controller
 	function index()
 	{
 		if ($message = $this->session->flashdata('message')) {
-			$this->load->view('auth/general_message', array('message' => $message));
-		} else {
+		    $content['content'] = $this->load->view('auth/general_message', array('message' => $message), true);
+	        $this->load->view('main_template', $content);
+	    } else {
 			redirect('/auth/login/');
 		}
 	}
@@ -30,10 +31,10 @@ class Auth extends CI_Controller
 	function login()
 	{
 		if ($this->tank_auth->is_logged_in()) {									// logged in
-			redirect('');
+			redirect('dashboard');
 
 		} elseif ($this->tank_auth->is_logged_in(FALSE)) {						// logged in, not activated
-			redirect('/auth/send_again/');
+			redirect('auth/send_again/');
 
 		} else {
 			$data['login_by_username'] = ($this->config->item('login_by_username', 'tank_auth') AND
@@ -119,10 +120,10 @@ class Auth extends CI_Controller
 	function register()
 	{
 		if ($this->tank_auth->is_logged_in()) {									// logged in
-			redirect('');
+			redirect('dashboard');
 
 		} elseif ($this->tank_auth->is_logged_in(FALSE)) {						// logged in, not activated
-			redirect('/auth/send_again/');
+			redirect('auth/send_again/');
 
 		} elseif (!$this->config->item('allow_registration', 'tank_auth')) {	// registration is off
 			$this->_show_message($this->lang->line('auth_message_registration_disabled'));
@@ -205,7 +206,7 @@ class Auth extends CI_Controller
 	function send_again()
 	{
 		if (!$this->tank_auth->is_logged_in(FALSE)) {							// not logged in or activated
-			redirect('/auth/login/');
+			redirect('auth/login/');
 
 		} else {
 			$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
@@ -228,7 +229,8 @@ class Auth extends CI_Controller
 					foreach ($errors as $k => $v)	$data['errors'][$k] = $this->lang->line($v);
 				}
 			}
-			$this->load->view('auth/send_again_form', $data);
+			$content['content'] = $this->load->view('auth/send_again_form', $data, true);
+	        $this->load->view('main_template', $content);
 		}
 	}
 
@@ -288,7 +290,8 @@ class Auth extends CI_Controller
 					foreach ($errors as $k => $v)	$data['errors'][$k] = $this->lang->line($v);
 				}
 			}
-			$this->load->view('auth/forgot_password_form', $data);
+			$content['content'] = $this->load->view('auth/forgot_password_form', $data, true);
+	        $this->load->view('main_template', $content);
 		}
 	}
 
@@ -335,6 +338,7 @@ class Auth extends CI_Controller
 			}
 		}
 		$this->load->view('auth/reset_password_form', $data);
+		$this->load->view('auth/send_again_form', $data);
 	}
 
 	/**
@@ -365,7 +369,8 @@ class Auth extends CI_Controller
 					foreach ($errors as $k => $v)	$data['errors'][$k] = $this->lang->line($v);
 				}
 			}
-			$this->load->view('auth/change_password_form', $data);
+			$content['content'] = $this->load->view('auth/change_password_form', $data, true);
+	        $this->load->view('main_template', $content);
 		}
 	}
 
@@ -402,7 +407,8 @@ class Auth extends CI_Controller
 					foreach ($errors as $k => $v)	$data['errors'][$k] = $this->lang->line($v);
 				}
 			}
-			$this->load->view('auth/change_email_form', $data);
+			$content['content'] = $this->load->view('auth/change_email_form', $data, true);
+	        $this->load->view('main_template', $content);
 		}
 	}
 
@@ -453,7 +459,8 @@ class Auth extends CI_Controller
 					foreach ($errors as $k => $v)	$data['errors'][$k] = $this->lang->line($v);
 				}
 			}
-			$this->load->view('auth/unregister_form', $data);
+			$content['content'] = $this->load->view('auth/unregister_form', $data, true);
+	        $this->load->view('main_template', $content);
 		}
 	}
 
@@ -466,7 +473,7 @@ class Auth extends CI_Controller
 	function _show_message($message)
 	{
 		$this->session->set_flashdata('message', $message);
-		redirect('/auth/');
+		redirect('/auth');
 	}
 
 	/**

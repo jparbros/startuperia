@@ -80,6 +80,9 @@
 			    </form>
 			</div>
 		</div> <!-- #nav -->
+		<?php if($__message = $this->session->flashdata('message')): ?>
+			<div class="message"><?php echo $__message?></div>
+		<?php endif; ?>
 
 		<div id="content" class="xfluid">
 		  <?php echo $content; ?>
