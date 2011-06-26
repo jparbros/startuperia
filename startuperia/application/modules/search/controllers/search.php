@@ -11,8 +11,8 @@ class Search extends CI_Controller {
 	function view_startups(){
     $q = $this->input->post('q_startups');
 	  //$q = "Twitter";
-	  
-	  if ($q)
+	  redirect(base_url() . 'startups/show/'.$q);
+	  /*if ($q)
 		{
 			$this->session->set_userdata('q_startups', $q);
 		}
@@ -27,6 +27,7 @@ class Search extends CI_Controller {
     //$content['startup'] = '';
 		$data['content'] = $this->load->view('show', $content, TRUE);
     $this->load->view('main_template', $data);
+    */
     
 	}
 
