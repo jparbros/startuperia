@@ -73,7 +73,10 @@
 				</li>
 			</ul>
 		</div> <!-- #nav -->
-		<?php echo $content; ?>
+
+		<div id="content">
+		  <?php echo $content; ?>
+		</div>
 	</div> <!-- #top -->
 	
 	
