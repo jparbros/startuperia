@@ -50,7 +50,7 @@
 						<td class="full">Gain ($)</td>
 					</tr>
 					<tr>
-						<!--td class="value"><?php print ($gail_full)? $gain_full : 0;?></td>
+						<!--td class="value"><?php print ($gain_full)? $gain_full : 0;?></td>
 						<td class="full">Gain (%)</td-->
 					</tr>
 				</tbody>
