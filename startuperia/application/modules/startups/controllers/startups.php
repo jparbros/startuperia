@@ -41,10 +41,8 @@ class Startups extends CI_Controller {
   }
   
   function search() {
-    $url = $_SERVER['REQUEST_URI'];
-    $params = explode('/',$url);
-    if($this->Startup->search($params[3])) {
-      redirect(base_url() . 'startups/show/'.$params[3]);
+    if($this->Startup->search($_POST['q_startup'])) {
+      redirect(base_url() . 'startups/show/'.$_POST['q_startup']);
     } else {
       
     }
