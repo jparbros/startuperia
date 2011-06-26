@@ -83,7 +83,7 @@ table { width: 100%; border: 0; margin-bottom: 2em;  }
 		text-align: left;
 		padding: 10px;
 		
-		background-color: #263849 !important;
+		background-color: #4B5970 !important;
 		
 		color: #FFF;
 		
@@ -142,7 +142,7 @@ html[xmlns] .clearfix {
 -------------------------------------------------------------- */
 body
 {
-	background: #D99A04;
+	background: #EEE;
 	font: 12px/1.7em arial,sans-serif;
 	min-height: 1063px;
 }
@@ -154,7 +154,7 @@ body
 	#header h1
 	{
 		background: url(../images/play_vc_logo_200px.png) no-repeat 0 0;
-		width: 200px;
+		width: 600px;
 		height: 80px;
 		line-height: 500px;
 		overflow: hidden;
@@ -281,7 +281,7 @@ body
 			font-size: 14px;			
 			font-style: normal;
 			font-weight: bold;
-			color: #263849;
+			color: #4B5970;
 			padding: 0 0 0 10px;
 			margin: 0;
 		}
@@ -350,7 +350,7 @@ body
 		
 		.portlet-tab-nav .portlet-tab-nav-active
 		{
-			background-color: #263849 !important;
+			background-color: #4B5970 !important;
 			border: 1px solid transparent;
 		}
 		
@@ -725,11 +725,11 @@ height: 0;
 .mega-container .mega:hover .mega-tab,
 .mega-container .mega:hover .mega-link,
 .mega-container .mega-current .mega-tab,
-.mega-container .mega-current .mega-link  { background-color: #263849; color: #fff !important; border-color: #1C2B37;   }
+.mega-container .mega-current .mega-link  { background-color: #4B5970; color: #fff !important; border-color: #1C2B37;   }
 
-.mega-container .mega:hover .mega-content { border-color: #263849; }
-.mega-container .mega-menu { background: #263849 !important; }
-.mega-container li > ul { background-color: #263849 !important; }
+.mega-container .mega:hover .mega-content { border-color: #4B5970; }
+.mega-container .mega-menu { background: #4B5970 !important; }
+.mega-container li > ul { background-color: #4B5970 !important; }
 
 
 
@@ -784,7 +784,7 @@ height: 0;
 
 /* Set default button colors */
 .btn, .btn-icon, .btn-mini,
-.btn:visited, .btn-icon:visited, .btn-mini:visited {  background-image: url(../images/bg-lite.png); background-color: #263849; border-color: #16222C; color: #FFF; }
+.btn:visited, .btn-icon:visited, .btn-mini:visited {  background-image: url(../images/bg-lite.png); background-color: #4B5970; border-color: #16222C; color: #FFF; }
 
 .btn:hover, .btn-icon:hover, .btn-mini:hover { background-color: #16222C; color: #FFF; }
 
@@ -965,7 +965,7 @@ ul.tabs {
 		ul.tabs li a 
 		{
 			text-decoration: none;
-			color: #263849;
+			color: #4B5970;
 			display: block;
 			font-size: 1.2em;
 			padding: 0 20px;
@@ -1020,7 +1020,7 @@ h2.accordion_panel
 
 	h2.accordion_panel a 
 	{
-		color: #263849;
+		color: #4B5970;
 		text-decoration: none;
 		padding: 0 0 0 50px;
 	}
