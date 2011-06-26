@@ -6,3 +6,6 @@
 *.bak
 startuperia/application/logs/*.php
 startuperia/captcha/*.jpg
+startuperia/application/config/database.php
+google*.html
+*~
