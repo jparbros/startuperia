@@ -50,6 +50,7 @@ DROP TABLE IF EXISTS `startuperia`.`users` ;
 
 CREATE  TABLE IF NOT EXISTS `startuperia`.`users` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `credits` FLOAT NOT NULL DEFAULT 0 ,
   `username` VARCHAR(50) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL ,
   `password` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL ,
   `email` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL ,
