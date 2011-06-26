@@ -108,8 +108,10 @@
             </tr>
             <tr>
               <td style="width:100%">
-                <form action="#" method="post" class="form label-inline">
+                <form action="<?php print base_url();?>orders/action/buy/" method="post" class="form label-inline">
                   <div class="center" style="width:100%"> 
+                    <input type="hidden" name="startup" value="<?php print $startup->name;?>" id="startup">
+                    <input type="hidden" name="price" value="<?php print $startup->value_per_share;?>" id="value_per_share">
                     <input type="submit" value="Buy" class="btn btn-medium btn-dollar" />
                     <input id="shares" name="shares" size="10" type="text" class="medium" value="# of shares"/>
                   </div>

@@ -13,5 +13,14 @@ class Orders extends CI_Controller {
 		
 	  return $this->load->view('main_template', $data);
 	}
+	
+	function action_buy(){
+	  $startup = strtolower($this->orders_model->buy());
+		if ($startup)
+		{
+		  redirect('/startups/'.$startup);
+    }
+    
+	}
 }
 ?>

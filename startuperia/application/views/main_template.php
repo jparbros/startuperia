@@ -19,7 +19,7 @@
 			
 			<div id="info">
 				<?php  if($this->tank_auth->is_logged_in()): ?>
-    				<h4>Welcome <?php echo $this->tank_auth->get_username();?></h4>
+    				<h4>Welcome <a href="<?php print base_url();?>dashboard"><?php echo $this->tank_auth->get_username();?></a></h4>
     				<p><a href="<?php echo base_url()?>auth/logout" title="Logout">Logout</a></p>
     				<img src="http://www.gravatar.com/avatar/<?php echo md5(strtolower($this->tank_auth->get_usermail()))?>?s=65&d=<?php echo urlencode(base_url()."images/avatar.jpg")?>" alt="avatar" />
 				<?php else: ?> 
@@ -94,7 +94,7 @@
 <script  type="text/javascript" src="<?php echo base_url(); ?>js/slate/slate.portlet.js"></script>
 <script  type="text/javascript" src="<?php echo base_url(); ?>js/plugin.js"></script>
 <script  type="text/javascript" src="<?php echo base_url(); ?>js/application.js"></script>
-
+<script  type="text/javascript" src="<?php echo base_url(); ?>js/base.js"></script>
 </body>
 
 </html>
