@@ -27,11 +27,14 @@ class Dashboard_model extends CI_Model {
       return $result[0]->stocks_value;
 	}
 	
-	function get_startups(){
-	  $this->db->select("SUM(id) as startups");
+	function get_startups($user_id){
+	  $this->db->select("count(*) as startups");
 	  $this->db->from("startups");
+	  $this->db->join("stocks", "stocks.startups_id=startups.id");
+	  $this->db->where('stocks.users_id', $user_id);
 	  $query = $this->db->get();
-	  return $query->result();
+	  $result=$query->result();
+	  return $result[0]->startups;
 	}
 	
 	function portfolio($user_id){

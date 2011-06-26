@@ -12,7 +12,7 @@
 			<table cellspacing="0" class="info_table">
 				<tbody>
 					<tr>
-						<td class="value"><?php print ($companies_owned[0]->startups)? $companies_owned[0]->startups : 0;?></td>
+						<td class="value"><?php print (isset($companies_owned))? $companies_owned:0;?></td>
 						<td class="full">Companies Owned</td>
 					</tr>
 					<tr>

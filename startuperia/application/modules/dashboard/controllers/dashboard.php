@@ -13,7 +13,7 @@ class Dashboard extends CI_Controller {
 		
 	    $content['example'] = "general";
 
-		$content['companies_owned'] = $this->dashboard_model->get_startups();
+		$content['companies_owned'] = $this->dashboard_model->get_startups($user_id);
 		$content['credits'] = $this->dashboard_model->get_credits($user_id);
 		$content['stocks_value'] = $this->dashboard_model->get_stock_value($user_id);
 		
