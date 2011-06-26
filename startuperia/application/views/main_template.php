@@ -23,19 +23,28 @@
 	
 	<div id="top">
 		<div id="header">
-			<h1><a href="index2.html">Portfolio</a></h1>
+			<h1><a href="<?php echo base_url() ?>">Portfolio</a></h1>
 			
 			<div id="info">
-				<h4>Welcome Pepe</h4>
+				<?php  if($this->tank_auth->is_logged_in()): ?>
+    				<h4>Welcome <?php echo $this->tank_auth->get_username();?></h4>
+    				<p><a href="./auth/logout" title="Logout">Logout</a></p>
+    				<img src="./images/avatar.jpg" alt="avatar" />
+				<?php else: ?> 
+  					<form action="<?php echo base_url() ?>/auth/login" method="post" accept-charset="utf-8">
+  						<label for="login">Email or login</label>
+                    	<input type="text" name="login" value="" id="login" maxlength="80" size="30"/><br/> 
+                    	<label for="password">Password</label> 
+                        <input type="password" name="password" value="" id="password" size="30"/><br/> 
+                    	<input type="checkbox" name="remember" value="1" id="remember" style="margin:0;padding:0"/>
+                    	<label for="remember">Remember me</label><br/>
+                    	<a href="<?php echo base_url() ?>/auth/forgot_password">Forgot password</a>
+                    	<a href="<?php echo base_url() ?>/auth/register">Register</a>
+                    	<input type="submit" name="submit" value="Let me in"  />
+                    </form>
+				<?php endif; ?>
 				
-
-				<p>
-					<!--Logged in as Admin-->
-					<br />
-					You have <a href="javascript:;">5 messages</a>
-				</p>
 				
-				<img src="./images/avatar.jpg" alt="avatar" />
 			</div> <!-- #info --> 
 					
 		</div> <!-- #header -->	
