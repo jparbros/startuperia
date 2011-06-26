@@ -23,7 +23,7 @@
 	
 	<div id="top">
 		<div id="header">
-			<h1><a href="<?php echo base_url() ?>">Portfolio</a></h1>
+			<h1><a href="<?php echo base_url() ?>">playVC</a></h1>
 			
 			<div id="info">
 				<?php  if($this->tank_auth->is_logged_in()): ?>
@@ -32,15 +32,15 @@
     				<img src="./images/avatar.jpg" alt="avatar" />
 				<?php else: ?> 
   					<form action="<?php echo base_url() ?>/auth/login" method="post" accept-charset="utf-8">
-  						<label for="login">Email or login</label>
-                    	<input type="text" name="login" value="" id="login" maxlength="80" size="30"/><br/> 
-                    	<label for="password">Password</label> 
-                        <input type="password" name="password" value="" id="password" size="30"/><br/> 
-                    	<input type="checkbox" name="remember" value="1" id="remember" style="margin:0;padding:0"/>
-                    	<label for="remember">Remember me</label><br/>
+  						<div class="field"><label for="login">Email or login</label>
+                    	<input type="text" name="login" value="" id="login" maxlength="80" size="30"/></div> 
+                    	<div class="field"><label for="password">Password</label> 
+                        <input type="password" name="password" value="" id="password" size="30"/></div> 
+                    	<div class="field"><input type="checkbox" name="remember" value="1" id="remember" style="margin:0;padding:0"/>
+                    	<label for="remember">Remember me</label>
                     	<a href="<?php echo base_url() ?>/auth/forgot_password">Forgot password</a>
                     	<a href="<?php echo base_url() ?>/auth/register">Register</a>
-                    	<input type="submit" name="submit" value="Let me in"  />
+                    	<input type="submit" name="submit" value="Let me in"/></div>
                     </form>
 				<?php endif; ?>
 				
