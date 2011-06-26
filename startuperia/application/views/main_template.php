@@ -83,7 +83,7 @@
 	
 	<div id="footer">
 		
-		<p>Copyright &copy; 2010 <a href="javascript:;">MadeByAmp</a>, all rights reserved.</p>
+		<p>Copyright &copy; 2011 <a href="javascript:;">playVC</a>, all rights reserved.</p>
 		
 	</div> <!-- #footer -->
 	
