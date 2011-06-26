@@ -51,7 +51,7 @@
 				</li>
 				
 				<li class="mega">
-					<a href="index2.html" class="mega-link">Trade</a>	
+					<a href="<?php echo base_url()?>startups" class="mega-link">StarUps</a>	
 				</li>
 				
 				<li class="mega">
