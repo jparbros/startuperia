@@ -13,12 +13,10 @@ DROP TABLE IF EXISTS `startuperia`.`startups` ;
 CREATE  TABLE IF NOT EXISTS `startuperia`.`startups` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
-  `permalink` VARCHAR(45) NOT NULL ,
-  `logo` VARCHAR(150) NOT NULL ,
   `symbol` VARCHAR(45) NOT NULL ,
-  `shares` INT NOT NULL DEFAULT 0 ,
-  `available_shares` INT NOT NULL DEFAULT 0 ,
-  `value_per_share` FLOAT NOT NULL DEFAULT 0 ,
+  `shares` INT NOT NULL DEFAULT 10000 ,
+  `available_shares` INT NOT NULL DEFAULT 10000 ,
+  `value_per_share` FLOAT NOT NULL DEFAULT 10 ,
   `funding` FLOAT NOT NULL DEFAULT 0 ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
@@ -64,8 +62,8 @@ CREATE  TABLE IF NOT EXISTS `startuperia`.`users` (
   `new_email` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ,
   `new_email_key` VARCHAR(50) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ,
   `last_ip` VARCHAR(40) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL ,
-  `last_login` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `last_login` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' ,
+  `created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' ,
   `modified` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB

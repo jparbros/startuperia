@@ -20,9 +20,5 @@ class Dashboard extends CI_Controller {
 	  return $this->load->view('main_template', $data);
 	}
 	
-    function view_market_summary() {
-      $data['content'] = $this->load->view('dashboard/market_summary', array(), true);
-      $this->load->view('main_template', $data);
-    }
 }
 ?>

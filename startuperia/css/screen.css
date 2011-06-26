@@ -149,7 +149,7 @@ body
 
 #wrapper { width: 100%; min-width: 960px; margin: 0 auto 150px; }
 
-#header { background: #4B5970; width: 93%; height: 96px; margin: 0 auto; position: relative; }
+#header { background: #4B5970; width: 93%; height: 116px; margin: 0 auto; position: relative; }
 
 	#header h1
 	{
@@ -170,7 +170,7 @@ body
 
 #info
 {
-	width: 400px;
+	width: 300px;
 	font-size: 11px;
 	font-weight: bold;
 	
