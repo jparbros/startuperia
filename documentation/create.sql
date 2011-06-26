@@ -18,6 +18,7 @@ CREATE  TABLE IF NOT EXISTS `startuperia`.`startups` (
   `available_shares` INT NOT NULL DEFAULT 10000 ,
   `value_per_share` FLOAT NOT NULL DEFAULT 10 ,
   `funding` FLOAT NOT NULL DEFAULT 0 ,
+  `permalink` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 

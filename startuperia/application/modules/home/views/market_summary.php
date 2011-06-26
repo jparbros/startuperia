@@ -1,0 +1,134 @@
+
+		<div class="portlet x9">			
+			
+			<div class="portlet-content">
+				
+				<div class="department">
+					<h2>Market Summary</h2>
+				</div>
+				<br />
+				<br />
+				<br />
+				<br />
+
+
+				
+					<table class="stats" title="area" width="100%" cellpadding="0" cellspacing="0">
+						<caption>Portfolio Value/Change</caption>
+						<thead>
+							<tr>
+								<td>&nbsp;</td>
+								<th>January</th>
+								<th>February</th>
+								<th>March</th>
+								<th>April</th>
+								<th>May</th>
+							</tr>
+						</thead>
+						
+						<tbody>
+							<tr>
+								<th>SQ</th>
+								<td>12</td>
+								<td>15</td>
+								<td>13</td>
+								<td>11</td>
+								<td>13</td>
+							</tr>
+							
+						</tbody>
+					</table>
+				
+				<div class="department">
+					<h2>Sector Summary</h2>
+				</div>
+				
+				<div class="xbreak"></div>
+			
+				<table cellpadding="0" cellspacing="0" border="0" >
+					
+					<thead>
+						<tr>
+							<th>Logo</th>
+							<th>Symbol</th>
+							<th>Company</th>
+							<th>Price</th>
+							<th>Change ($)</th>
+							<th>Change (%)</th>
+						</tr>
+					</thead>	
+					
+					<tbody>
+						<tr>
+							<td>Default</td>			
+							<td>SQ</td>
+							<td>Square</td>
+							<td class="right">$2.00</td>
+							<td class="right">$0.50</td>
+							<td class="right">33.3%</td>
+						</tr>
+						<tr>
+							<td>Default</td>			
+							<td>T</td>
+							<td>Twitter</td>
+							<td class="right">$3.00</td>
+							<td class="right">$0.50</td>
+							<td class="right">33.3%</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				
+			</div> <!-- .portlet-content -->
+			
+		</div> <!-- .portlet -->
+		
+		
+		
+		<div class="portlet x3">
+			<div class="portlet-header"><h4>Popular Companies</h4></div>
+			
+			<div class="portlet-content">
+				
+				<div class="xbreak"></div>
+			
+				<table cellpadding="0" cellspacing="0" border="0" >	
+					
+					<tbody>
+						<tr>
+							<td>Square</td>			
+							<td>$2.00</td>
+						</tr>
+						<tr>
+							<td>Twitter</td>			
+							<td>$2.40</td>
+						</tr>
+					</tbody>
+				</table>
+				
+			</div>
+		</div>
+		
+		<div class="portlet x3">
+			<div class="portlet-header"><h4>My Portfolio</h4></div>
+			
+			<div class="portlet-content">
+				
+				<div class="xbreak"></div>
+			
+				<table cellpadding="0" cellspacing="0" border="0" >	
+					
+					<tbody>
+						<tr>
+							<td>Square</td>			
+							<td>$2.00</td>
+						</tr>
+						<tr>
+							<td>Twitter</td>			
+							<td>$2.40</td>
+						</tr>
+					</tbody>
+				</table>
+				
+			</div>
+		</div>

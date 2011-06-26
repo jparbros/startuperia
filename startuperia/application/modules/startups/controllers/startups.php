@@ -36,8 +36,4 @@ class Startups extends CI_Controller {
     $this->Startup->get_all_startups();
   }
   
-  function view_market_summary() {
-    $data['content'] = $this->load->view('dashboard/market_summary', array(), true);
-    $this->load->view('main_template', $data);
-  }
 }
