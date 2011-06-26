@@ -47,7 +47,7 @@
 			<ul class="mega-container mega-grey">
 	
 				<li class="mega mega-current">
-					<a href="index2.html" class="mega-link">Portfolio</a>	
+					<a href="<?php echo base_url()?>dashboard" class="mega-link">Portfolio</a>	
 				</li>
 				
 				<li class="mega">
@@ -55,7 +55,7 @@
 				</li>
 				
 				<li class="mega">
-					<a href="<?php echo base_url()?>/friends" class="mega-link">Users</a>	
+					<a href="<?php echo base_url()?>friends" class="mega-link">Friends</a>	
 				</li>
 		
 				<li class="mega">				
