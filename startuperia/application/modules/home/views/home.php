@@ -8,7 +8,7 @@
     <script src='http://code.jquery.com/jquery-1.4.4.min.js' type='text/javascript'></script>
     <link href='http://fonts.googleapis.com/css?family=Metrophobic' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css' />
-    <link href='/stylesheets/index.css' rel='stylesheet' type='text/css' />
+    <link href='/css/index.css' rel='stylesheet' type='text/css' />
   </head>
   <body>
     <div id='content'>

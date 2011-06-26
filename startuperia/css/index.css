@@ -1,0 +1,224 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline; }
+
+*focus {
+  outline: 0; }
+
+body {
+  line-height: 1;
+  color: black;
+  background: white; }
+
+table {
+  border-collapse: separate;
+  border-spacing: 0; }
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal; }
+
+blockquotebefore, blockquoteafter, qbefore, qafter {
+  content: ""; }
+
+blockquote, q {
+  quotes: "" ""; }
+
+form input, form textarea, form select, form option, form button {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  padding: 2px; }
+form fieldset {
+  padding: 0.5em 1em; }
+form .field {
+  overflow: hidden;
+  padding: 0.5em 0;
+  padding-left: 0.2em; }
+form label {
+  display: block;
+  margin-top: 0.5em;
+  margin-right: 2em;
+  margin-bottom: 0.2em; }
+form input.text, form input.file, form textarea {
+  line-height: 1.3em; }
+form ul {
+  overflow: hidden; }
+  form ul li {
+    margin: 0.3em 0;
+    overflow: hidden;
+    line-height: 1em;
+    margin-bottom: 1em; }
+  form ul input {
+    margin-right: 0.5em;
+    float: left; }
+form input.submit, form button.submit {
+  border: 1px solid #666666;
+  background-color: #dddddd;
+  -webkit-border-radius: 1.3em;
+  -moz-border-radius: 1.3em;
+  -khtml-border-radius: 1.3em;
+  border-radius: 1.3em;
+  text-shadow: 0 1px 1px white;
+  height: 2.6em;
+  padding-left: 1.82em;
+  padding-right: 1.82em;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  background-image: url("/images/bg_button_roundness.png");
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  margin: 1em 0; }
+  form input.submit:hover, form button.submit:hover {
+    background-color: #414d61; }
+  form input.submit:active, form button.submit:active {
+    background-color: #374151; }
+
+p.note {
+  color: #666666;
+  font-size: 0.85em;
+  padding-top: 0.5em;
+  margin-bottom: 0; }
+
+.notice {
+  margin: 1em 0;
+  border-top: 1px solid #eee46a;
+  border-bottom: 1px solid #eee46a;
+  padding: 1em;
+  background: #fefede; }
+
+.valid input {
+  background-color: #def0bc; }
+
+.invalid {
+  background-color: #f6cfcf; }
+  .invalid p.message {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+    font-size: 0.85em;
+    color: #c00000; }
+
+p.note.invalid {
+  color: #c00000;
+  background-color: transparent; }
+
+ul.taggable input {
+  outline: 0; }
+
+body {
+  font-family: Helvetica, Arial, Verdana, sans-serif;
+  background: transparent url("/images/stripes.png") repeat scroll 0 0;
+  color: #263849; }
+
+h1, h2, h3 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  letter-spacing: -0.04em;
+  font-family: "Metrophobic"; }
+
+ul, ol {
+  list-style-position: inside; }
+
+li, p {
+  line-height: 1.5; }
+
+#content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 850px;
+  overflow: hidden;
+  background: white;
+  padding: 30px;
+  -moz-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 0 0 10px 10px;
+  -moz-border-radius: 0 0 10px 10px;
+  -khtml-border-radius: 0 0 10px 10px;
+  border-radius: 0 0 10px 10px;
+  padding: 0;
+  padding-top: 30px;
+  margin-bottom: 50px;
+  border: 1px solid #aaaaaa; }
+  #content #value_proposition {
+    margin: 10px 70px 50px;
+    color: #263849;
+    position: relative; }
+    #content #value_proposition h1 {
+      margin-top: 0.5em;
+      font-size: 2em;
+      font-family: "Permanent Marker";
+      color: #4b5970; }
+    #content #value_proposition ul {
+      list-style: none; }
+    #content #value_proposition li {
+      font-size: 1.5em;
+      font-family: "Metrophobic"; }
+    #content #value_proposition .logo_stack {
+      position: absolute;
+      top: 0;
+      right: 0; }
+  #content #call_to_action {
+    padding: 2em;
+    background: #eeeeee;
+    text-align: center; }
+    #content #call_to_action a {
+      font-family: "Metrophobic";
+      line-height: 1.6em;
+      border: 1px solid #666666;
+      background-color: #dddddd;
+      -webkit-border-radius: 0.8em;
+      -moz-border-radius: 0.8em;
+      -khtml-border-radius: 0.8em;
+      border-radius: 0.8em;
+      text-shadow: 0 1px 1px white;
+      height: 1.6em;
+      padding-left: 1.12em;
+      padding-right: 1.12em;
+      cursor: pointer;
+      text-align: center;
+      font-weight: bold;
+      -webkit-border-radius: 1.92em;
+      -moz-border-radius: 1.92em;
+      -khtml-border-radius: 1.92em;
+      border-radius: 1.92em;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -khtml-border-radius: 5px;
+      border-radius: 5px;
+      -moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+      -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+      box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+      background-image: url("/images/bg_button_roundness.png");
+      background-repeat: repeat-x;
+      background-position: 0 100%;
+      border: none;
+      font-size: 1.5em;
+      padding: 0.5em 1em;
+      color: white;
+      text-decoration: none;
+      background-color: #4b5970;
+      text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.5); }
+      #content #call_to_action a:hover {
+        background-color: #414d61; }
+      #content #call_to_action a:active {
+        background-color: #374151; }
+      #content #call_to_action a:hover {
+        text-decoration: none;
+        background: darker(#4b5970, 20%); }
+  #content #details {
+    padding: 20px 30px 50px;
+    overflow: hidden; }
+    #content #details h2 {
+      color: #08beda; }
+    #content #details li {
+      margin-bottom: 0.5em; }
+    #content #details #how_it_works {
+      width: 50%;
+      float: left; }
+    #content #details #benefits {
+      width: 50%;
+      float: right; }
