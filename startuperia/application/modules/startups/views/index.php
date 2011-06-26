@@ -27,18 +27,18 @@
         <tbody>
           <?php foreach($startups as $startup) :?>
           <tr>
-            <td><? ?></td>      
-            <td><img src="<?php echo $startup->logo; ?>"></td>
-            <td><? echo $startup->name; ?></td>
-            <td class="right">$2.00</td>
-            <td class="right">$0.50</td>
+            <td><img src="<?php echo $startup->logo; ?>"></td>      
+            <td></td>
+            <td><a href="<?echo base_url() . 'startups/' . $startup->permalink ?>"><? echo $startup->name; ?></a></td>
+            <td class="right">$<? echo number_format($startup->value_per_share,2,'.',',') ?></td>
+            <td class="right">$<?echo number_format($startup->todays_change,2,'.',',') ?></td>
             <td class="right">33.3%</td>
           </tr>
           <?endforeach ?>
         </tbody>
       </table>
 
-      
+      <? echo $pagination_links?>
     </div> <!-- .portlet-content -->
     
   </div> <!-- .portlet -->
