@@ -156,20 +156,17 @@
 							</tr>
 						</thead>
 						<tbody>
-			  			  <?php foreach($accepted_orders->result() as $order) { ?>
-    							<tr class="odd gradeX">
-								  <td><?php print $order->name;?></td>
-								  <td><?php print $order->symbol;?></td>
-								  <td><?php print $order->name;?></td>
-								  <td><?php print $order->name;?></td>
-								  <td><?php print $order->quantity;?></td>
-								  <td><?php print $order->name;?></td>
-								  <td><?php print $order->name;?></td>
-								  <td><?php print $order->name;?></td>
-								  <td><?php print $order->name;?></td>
-								  <td><?php print $order->name;?></td>
-							    </tr>
-      				  <?php } ?>
+							<?php foreach($accepted_orders->result() as $order) { ?>
+							  <tr>
+							  <td><?php print $order->name;?></td>
+							  <td><?php print $order->symbol;?></td>
+							  <td><?php print $order->name;?></td>
+							  <td><?php print $order->name;?></td>
+							  <td><?php print $order->quantity;?></td>
+							  <td><?php print $order->name;?></td>
+							  <td><?php print $order->name;?></td>
+							  </tr>
+							<?php } ?>
 							<!--tr class="even gradeC">
 								<td>Square</td>
 								<td>SQ</td>
@@ -221,17 +218,17 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="odd gradeX">
-							  <?php foreach($pending_orders->result() as $order) { ?>
-								  <td><?php print $order->name;?></td>
-								  <td><?php print $order->symbol;?></td>
-								  <td><?php print $order->name;?></td>
-								  <td><?php print $order->name;?></td>
-								  <td><?php print $order->quantity;?></td>
-								  <td><?php print $order->name;?></td>
-								  <td><?php print $order->name;?></td>
-								<?php } ?>
-							</tr>
+						  <?php foreach($pending_orders->result() as $order) { ?>
+						    <tr>
+							  <td><?php print $order->name;?></td>
+							  <td><?php print $order->symbol;?></td>
+							  <td><?php print $order->name;?></td>
+							  <td><?php print $order->name;?></td>
+							  <td><?php print $order->quantity;?></td>
+							  <td><?php print $order->name;?></td>
+							  <td><?php print $order->name;?></td>
+							  </tr>
+							<?php } ?>
 						</tbody>
 					</table>
 				</div>
