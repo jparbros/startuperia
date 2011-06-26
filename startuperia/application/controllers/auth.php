@@ -92,7 +92,9 @@ class Auth extends CI_Controller
 					$data['captcha_html'] = $this->_create_captcha();
 				}
 			}
-			$this->load->view('auth/login_form', $data);
+			
+			$data['content'] = $this->load->view('auth/login_form', $data, true);
+	        $this->load->view('main_template', $data);
 		}
 	}
 
@@ -104,14 +106,15 @@ class Auth extends CI_Controller
 	function logout()
 	{
 		$this->tank_auth->logout();
-
-		$this->_show_message($this->lang->line('auth_message_logged_out'));
+		redirect('');
+		//$this->_show_message($this->lang->line('auth_message_logged_out'));
 	}
 
 	/**
 	 * Register user on the site
 	 *
 	 * @return void
+	 * @todo fix send again
 	 */
 	function register()
 	{
@@ -188,7 +191,9 @@ class Auth extends CI_Controller
 			$data['use_username'] = $use_username;
 			$data['captcha_registration'] = $captcha_registration;
 			$data['use_recaptcha'] = $use_recaptcha;
-			$this->load->view('auth/register_form', $data);
+			
+			$data['content'] = $this->load->view('auth/register_form', $data, true);
+	        $this->load->view('main_template', $data);
 		}
 	}
 

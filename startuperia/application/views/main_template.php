@@ -37,10 +37,10 @@
                     	<div class="field"><label for="password">Password</label> 
                         <input type="password" name="password" value="" id="password" size="30"/></div> 
                     	<div class="field"><input type="checkbox" name="remember" value="1" id="remember" style="margin:0;padding:0"/>
-                    	<label for="remember">Remember me</label>
+                    	<label for="remember">Remember me</label></div>
                     	<a href="<?php echo base_url() ?>/auth/forgot_password">Forgot password</a>
                     	<a href="<?php echo base_url() ?>/auth/register">Register</a>
-                    	<input type="submit" name="submit" value="Let me in"/></div>
+                    	<input type="submit" name="submit" value="Let me in"/>
                     </form>
 				<?php endif; ?>
 				
@@ -83,7 +83,7 @@
 			</ul>
 		</div> <!-- #nav -->
 
-		<div id="content">
+		<div id="content" class="xfluid">
 		  <?php echo $content; ?>
 		</div>
 	</div> <!-- #top -->
