@@ -114,8 +114,7 @@ CREATE  TABLE IF NOT EXISTS `startuperia`.`stocks` (
   `startups_id` INT UNSIGNED NOT NULL ,
   `users_id` INT(11) NOT NULL ,
   `shares` INT NOT NULL ,
-  `adquisition_value` FLOAT NOT NULL ,
-  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  `total_value` FLOAT NOT NULL ,
   PRIMARY KEY (`id`) ,
   CONSTRAINT `fk_stocks_startups1`
     FOREIGN KEY (`startups_id` )
