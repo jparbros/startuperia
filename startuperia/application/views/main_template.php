@@ -75,7 +75,7 @@
 			</ul>
 			<div id="search">
 			    <form action="<?php print base_url();?>search/startups" method="post">
-				<input type="text" name="q_startups" value="" id="q_startups">
+				      <input type="text" name="q_startups" value="" id="q_startups">
             	<input type="submit" value="Startup Search &rarr;" class="btn btn-orange">
 			    </form>
 			</div>
