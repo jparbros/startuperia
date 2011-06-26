@@ -39,6 +39,8 @@
 */
 $route['([a-z0-9_]+)'] = "$1/index";
 
+$route['startups/(:any)'] = "startups/show/?permalink=$1";
+
 $route['([a-z0-9_]+)/action/([a-z0-9_]+)/([0-9]+)/([0-9]+)'] = "$1/action_$2/$3/$4";
 $route['([a-z0-9_]+)/action/([a-z0-9_]+)/([0-9]+)'] = "$1/action_$2/$3";
 $route['([a-z0-9_]+)/action/([a-z0-9_]+)'] = "$1/action_$2";
@@ -54,6 +56,7 @@ $route['([a-z0-9_]+)/ajax/([a-z0-9_]+)/([0-9]+)'] = "$1/ajax_$2/$3";
 $route['([a-z0-9_]+)/ajax/([a-z0-9_]+)'] = "$1/ajax_$2";
 $route['default_controller'] = "home";
 $route['404_override'] = '';
+
 
 
 /* End of file routes.php */
