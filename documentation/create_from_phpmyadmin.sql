@@ -203,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `newpass_key` varchar(32) COLLATE utf8_bin DEFAULT NULL,
   `newpass_time` datetime DEFAULT NULL,
   `last_ip` varchar(40) COLLATE utf8_bin NOT NULL,
-  `last_login` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `last_login` datetime NOT NULL,
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
