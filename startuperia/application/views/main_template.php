@@ -5,23 +5,15 @@
 
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<title>Startuperia</title>	
-	
+	<title>playVC</title>	
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/screen.css" type="text/css" media="screen" title="no title" charset="utf-8" />	
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/plugin.css" type="text/css" media="screen" title="no title" charset="utf-8" />	
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/custom.css" type="text/css" media="screen" title="no title" charset="utf-8" />		
-	
-	<style type="text/css" media="screen">
-		
-	</style>
-
 </head>
 
 <body>
-	
-<div id="wrapper" class="clearfix">
-	
-	<div id="top">
+  <div id="wrapper" class="clearfix">
+	 <div id="top">
 		<div id="header">
 			<h1><a href="<?php echo base_url() ?>">playVC</a></h1>
 			
@@ -63,7 +55,7 @@
 				</li>
 				
 				<li class="mega">
-					<a href="index2.html" class="mega-link">Friends</a>	
+					<a href="<?php echo base_url()?>/friends" class="mega-link">Users</a>	
 				</li>
 		
 				<li class="mega">				
