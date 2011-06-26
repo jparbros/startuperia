@@ -94,6 +94,7 @@
 <script  type="text/javascript" src="<?php echo base_url(); ?>js/slate/slate.portlet.js"></script>
 <script  type="text/javascript" src="<?php echo base_url(); ?>js/plugin.js"></script>
 <script  type="text/javascript" src="<?php echo base_url(); ?>js/application.js"></script>
+<script  type="text/javascript" src="<?php echo base_url(); ?>js/highcharts.js"></script>
 
 </body>
 
