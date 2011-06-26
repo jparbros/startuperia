@@ -485,3 +485,12 @@ h2.calendar_header { font-size: 56px; text-align: center; line-height: 48px; mar
 -------------------------------------------------------------- */
 
 .company-logo { margin-left: auto; margin-right: auto;}
+
+/* -------------------------------------------------------------- 
+   Search Bar
+-------------------------------------------------------------- */
+
+#search {
+	float:right;
+	margin:7px;
+}

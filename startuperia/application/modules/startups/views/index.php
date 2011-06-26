@@ -29,7 +29,7 @@
           <tr>
             <td><img src="<?php echo $startup->logo; ?>"></td>      
             <td></td>
-            <td><a href="<?echo base_url() . 'startups/' . $startup->permalink ?>"><? echo $startup->name; ?></a></td>
+            <td><a href="<?echo base_url() . 'startups/show/' . $startup->permalink ?>"><? echo $startup->name; ?></a></td>
             <td class="right">$<? echo number_format($startup->value_per_share,2,'.',',') ?></td>
             <td class="right">$<?echo number_format($startup->todays_change,2,'.',',') ?></td>
             <td class="right">33.3%</td>

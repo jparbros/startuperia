@@ -3,7 +3,7 @@
 class Startup extends CI_Model {
   
   const companies_url = 'http://api.crunchbase.com/v/1/company/';
-  const search_url = 'http://api.crunchbase.com/v/1/search.js';
+  const search_url = 'http://api.crunchbase.com/v/1/search.js?query=';
   const list_entities_url = 'http://api.crunchbase.com/v/1/';
   const image_url = 'http://www.crunchbase.com/';
   const initial_shares = 10000;
@@ -39,8 +39,8 @@ class Startup extends CI_Model {
     }
   }
   
-  public function all_startups($page = 1) {
-    $startups = array_slice($this->get_all_startups(), ($page * self::page_lenght), self::page_lenght);
+  public function all_startups($per_page = 0) {
+    $startups = array_slice($this->get_all_startups(), $per_page, self::page_lenght);
     $startups_return = array();
     foreach($startups as $startup) {
       $startups_return[] = new Startup($startup['permalink']);
@@ -161,11 +161,33 @@ class Startup extends CI_Model {
     return $this->todays_value() - $this->yesterdays_value();
   }
   
-}
+  public function search($query) {
+    $startups = $this->get_all_startups();
+    return $this->searchNestedArray($startups, $query);
+  }
+  
+  protected function searchNestedArray(array $array, $search, $mode = 'value') {
 
-function cmp($a, $b) {
-    if ($a['name'] == $b['name']) {
-        return 0;
-    }
-    return ($a['name'] < $b['name']) ? -1 : 1;
+      foreach (new RecursiveIteratorIterator(new RecursiveArrayIterator($array)) as $key => $value) {
+          if ($search === ${${"mode"}})
+              return true;
+      }
+      return false;
+  }
+  
+  protected function search_in_array($array, $key, $value)
+  {
+      $results = array();
+
+      if (is_array($array))
+      {
+          if ($array[$key] == $value)
+              $results[] = $array;
+
+          foreach ($array as $subarray)
+              $results = array_merge($results, $this->search_in_array($subarray, $key, $value));
+      }
+
+      return $results;
+  }
 }

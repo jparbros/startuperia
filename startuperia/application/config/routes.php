@@ -39,7 +39,10 @@
 */
 $route['([a-z0-9_]+)'] = "$1/index";
 
-$route['startups/(:any)'] = "startups/show/?permalink=$1";
+$route['startups?page=(:any)'] = "startups/index?page=$1";
+$route['startups/search'] = "startups/search";
+$route['startups/show/(:any)'] = "startups/show/?permalink=$1";
+
 $route['auth/(:any)'] = "auth/$1";
 $route['profile/(:any)'] = "dashboard/index/$1";
 $route['cron/(:any)']="cron/$1";
