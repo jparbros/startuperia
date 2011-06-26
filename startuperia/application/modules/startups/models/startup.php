@@ -6,9 +6,11 @@ class Startup extends CI_Model {
   const search_url = 'http://api.crunchbase.com/v/1/search.js';
   const list_entities_url = 'http://api.crunchbase.com/v/1/';
   const image_url = 'http://www.crunchbase.com/';
+  const initial_shares = 10000;
   const page_lenght = 20;
   
   protected $startup_data;
+  protected $row;
   
   function __construct($startup_name = null) {
     parent::__construct();
@@ -23,7 +25,16 @@ class Startup extends CI_Model {
     $this->startup_data = $this->http_get(self::companies_url . $startup_name . ".js");
     $row = $this->exist($startup_name);
     if (!$row) {
-      $this->db->insert('startups', array('name' => $this->name,'permalink' => $this->permalink, 'logo' => self::image_url . $this->image['available_sizes'][0][1])); 
+      $this->db->insert('startups', array(
+        'name' => $this->name,
+        'permalink' => $this->permalink, 
+        'logo' => self::image_url . $this->image['available_sizes'][0][1], 
+        'funding' => $this->funding(),
+        'value_per_share' => $this->calculate_price(),
+        'shares' => self::initial_shares,
+        'available_shares' => self::initial_shares
+      )); 
+      $this->exist($startup_name);
     }
   }
   
@@ -51,7 +62,8 @@ class Startup extends CI_Model {
   protected function exist($startup_name) {
     $query = $this->db->get_where('startups',array('permalink' => $startup_name));
     if ($query->num_rows() > 0) {
-      $query->row(0, 'Startup');
+      $this->row = $query->row(0, 'Startup');
+      return true;
     } else {
       return false;
     }
@@ -60,10 +72,12 @@ class Startup extends CI_Model {
   public function __get($name) {
     if (array_key_exists($name, $this->startup_data)) {
       return $this->startup_data[$name];
-    } elseif ($name == 'funding'){
-      return $this->funding();
+    } elseif (is_object($this->row) && array_key_exists($name, get_object_vars($this->row))){
+      return $this->row->$name;
     } elseif ($name == 'long_description'){
       return $this->long_description();
+    } elseif ($name == 'todays_change') {
+      return $this->todays_change();
     } else {
       return parent::__get($name);
     }
@@ -87,6 +101,10 @@ class Startup extends CI_Model {
     return $funding;
   }
   
+  public function calculate_price(){
+    return ($this->funding()/self::initial_shares)/1000;
+  }
+  
   public function long_description() {
     $overviews = explode('</p>', $this->overview);
     $overview = '';
@@ -94,6 +112,51 @@ class Startup extends CI_Model {
       $overview .=  array_shift($overviews);
     }
     return $overview;
+  }
+  
+  public function month_everage($month, $year){
+    $where = array(
+      'startups_id =' => $this->id, 
+      'created >' => $year.'-'.$month.'-01 00:00:00', 
+      'created <=' => $year.'-'.$month.'-31 23:59:59');
+    $this->db->where($where);
+    $this->db->select_avg('value_per_share');
+    $query = $this->db->get('values_history');
+    return (is_null($query->row(0)->value_per_share))? 0 : $query->row(0)->value_per_share;
+  }
+  
+  public function avg_last_five_months() {
+    $avgs = array();
+    for ($i = 1; $i <= 5; $i++) {
+      $avgs[date("F", strtotime("-".$i." month") )] = $this->month_everage(date("m", strtotime("-".$i." month") ), date("Y", strtotime("-".$i." month") ));
+    }
+    return array_reverse($avgs);
+  }
+  
+  public function yesterdays_value(){
+    $where = array(
+      'startups_id =' => $this->id, 
+      'created >' => date("Y-m-d 00:00:00", strtotime("-1 day")), 
+      'created <=' => date("Y-m-d 23:59:59", strtotime("-1 day")));
+    $this->db->where($where);
+    $this->db->select_avg('value_per_share');
+    $query = $this->db->get('values_history');
+    return (is_null($query->row(0)->value_per_share))? 0 : $query->row(0)->value_per_share;
+  }
+  
+  public function todays_value(){
+    $where = array(
+      'startups_id =' => $this->id, 
+      'created >' => date("Y-m-d 00:00:00"), 
+      'created <=' => date("Y-m-d 23:59:59"));
+    $this->db->where($where);
+    $this->db->select_avg('value_per_share');
+    $query = $this->db->get('values_history');
+    return (is_null($query->row(0)->value_per_share))? 0 : $query->row(0)->value_per_share;
+  }
+  
+  public function todays_change() {
+    return $this->todays_value() - $this->yesterdays_value();
   }
   
 }
