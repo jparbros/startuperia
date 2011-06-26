@@ -83,7 +83,7 @@
 	
 	<div id="footer">
 		
-		<p>Copyright &copy; 2010 <a href="javascript:;">MadeByAmp</a>, all rights reserved.</p>
+		<p>Copyright &copy; 2011 <a href="javascript:;">playVC</a>, all rights reserved.</p>
 		
 	</div> <!-- #footer -->
 	
@@ -94,6 +94,7 @@
 <script  type="text/javascript" src="<?php echo base_url(); ?>js/slate/slate.portlet.js"></script>
 <script  type="text/javascript" src="<?php echo base_url(); ?>js/plugin.js"></script>
 <script  type="text/javascript" src="<?php echo base_url(); ?>js/application.js"></script>
+<script  type="text/javascript" src="<?php echo base_url(); ?>js/highcharts.js"></script>
 
 </body>
 

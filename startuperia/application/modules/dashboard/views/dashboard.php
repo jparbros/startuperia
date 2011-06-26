@@ -18,14 +18,14 @@
 					<tr>
 						<td class="value">
 						<?php 
-						$startupcash = ($credits[0]->credits)? $credits[0]->credits : 0;
+						$startupcash = (isset($credits))?$credits:0;
 						print $startupcash;?></td>
 						<td class="full">StartupCash</td>
 					</tr>
 					<tr>
 						<td class="value">
 						  <?php 
-						  $stockvalue = ($stock_value[0]->stocks_value)? $stock_value[0]->stocks_value : 0;
+						  $stockvalue = (isset($stocks_value))?$stocks_value:0;
 						  print $stockvalue;?>
 						</td>
 						<td class="full">Stock Value</td>
@@ -34,7 +34,7 @@
 						<td class="value">
 						<?php 
 						  $portfolio_value = $startupcash + $stockvalue;
-						  print ($portfolio_value)? $portfolio_value : 0;?>
+						  print ($portfolio_value)?$portfolio_value:0;?>
 						</td>
 						<td class="full">Portfolio Value</td>
 					</tr>
