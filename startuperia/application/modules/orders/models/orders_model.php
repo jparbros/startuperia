@@ -5,6 +5,7 @@ class Orders_model extends CI_Model {
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->model('friends/Friends_model');
 	}
 	
 	function buy(){
@@ -13,28 +14,39 @@ class Orders_model extends CI_Model {
 	  $query = $this->db->get_where('startups', array('name' => $startup));
 	  $result = $query->result();
 	  $startup_id = $result[0]->id;
+	  $value_per_share = $result[0]->value_per_share;
 	  $available_shares = $result[0]->available_shares - $_POST['shares'];
-
-	  if ($startup_id)
+      $user_id = $this->tank_auth->get_user_id();
+	  
+	  /** Create Order **/
+      if ($startup_id)
 		{
 		  $data = array(
   	    'startups_id' => $startup_id,
-  	    'users_id' => $this->tank_auth->get_user_id(),
+  	    'users_id' => $user_id,
   	    'value' => number_format($_POST['price'],2,'.',','),
   	    'quantity' => $_POST['shares'],
   	    'type' => 'buy',
   	    'status' => 'accepted'
   	  );
-
   	  $this->db->insert('orders', $data);
   	  unset($data);
+     // +generar orden, +disminuye creditos usuario, +de disminuye available shares, se aumenta stock.
   	  
+  	  /** Updates available shares **/
   	  $data = array(
   	    'available_shares' => $available_shares
   	  );
-  	  
   	  $this->db->where('id', $startup_id);
   	  $this->db->update('startups', $data);
+  	  
+  	  /** Update user credits **/
+  	  $credits = $this->Friends_model->get_credits($user_id);
+  	  $data = array(
+  	    'credits' => $credits - ($value_per_share* $_POST['shares'])
+  	  );
+  	  $this->db->where('user_id', $user_id);
+  	  $this->db->update('user_profiles', $data);
   	  
   	  $this->stocks($startup_id);
   	  //print $this->db->last_query();

@@ -43,6 +43,7 @@ class Cron_model extends CI_Model {
               'value_per_share' => $new_value,
              )
            );
+           
            $this->db->where('id', $id);
            $this->db->update('startups', array('value_per_share' => $new_value) ); 
     }

@@ -16,25 +16,27 @@
 						<td class="full">Companies Owned</td>
 					</tr>
 					<tr>
-						<td class="value">
+						<td class="value">$
 						<?php 
 						$startupcash = (isset($credits))?$credits:0;
-						print $startupcash;?></td>
+						echo number_format($startupcash,2,'.', ',');?></td>
 						<td class="full">StartupCash</td>
 					</tr>
 					<tr>
-						<td class="value">
+						<td class="value">$
 						  <?php 
 						  $stockvalue = (isset($stocks_value))?$stocks_value:0;
-						  print $stockvalue;?>
+						 echo number_format($stockvalue,2,'.', ',');?>
 						</td>
 						<td class="full">Stock Value</td>
 					</tr>
 					<tr>
-						<td class="value">
+						<td class="value">$
 						<?php 
 						  $portfolio_value = $startupcash + $stockvalue;
-						  print ($portfolio_value)?$portfolio_value:0;?>
+						  $portfolio_value = ($portfolio_value)?$portfolio_value:0;
+						  echo number_format($portfolio_value,2,'.', ',');
+						  ?>
 						</td>
 						<td class="full">Portfolio Value</td>
 					</tr>
@@ -44,13 +46,14 @@
 					  foreach($portfolio->result() as $order) { 
 						    $market_value = $order->vps * $order->value;
 						    $gain_money += $market_value-$order->value;
+						    $gain_money = ($gain_money)? $gain_money : 0;
 						    $gain_full = $market_value/$order->value;
 					  } ?>
-						<td class="value"><?php print ($gain_money)? $gain_money : 0;?></td>
+						<td class="value">$ <?php echo number_format($gain_money,2,'.', ',')?></td>
 						<td class="full">Gain ($)</td>
 					</tr>
 					<tr>
-						<!--td class="value"><?php print ($gain_full)? $gain_full : 0;?></td>
+						<!--td class="value"><?php /*print ($gain_full)? $gain_full : 0;*/?></td>
 						<td class="full">Gain (%)</td-->
 					</tr>
 				</tbody>
@@ -184,10 +187,10 @@
 							  <td><?php print $order->symbol;?></td>
 							  <td><?php print $order->vps;?></td>
 							  <td><?php print $order->total_shares;?></td>
-							  <td><?php print $order->value;?></td>
-							  <td><?php print $market_value;?></td>
-							  <td><?php print $gain_money;?></td>
-							  <td><?php print $gain_por;?></td>
+							  <td>$<?php print number_format($order->value,2,'.', ',');?></td>
+							  <td>$<?php print number_format($market_value,2,'.', ',');?></td>
+							  <td>$<?php print number_format($gain_money,2,'.', ',');?></td>
+							  <td><?php print number_format($gain_por, 2,'.', ',');?>%</td>
 							  </tr>
 							<?php } ?>
 						</tbody>
