@@ -40,8 +40,8 @@ class Startup extends CI_Model {
     }
   }
   
-  public function all_startups($page = 1) {
-    $startups = array_slice($this->get_all_startups(), ($page * self::page_lenght), self::page_lenght);
+  public function all_startups($per_page = 0) {
+    $startups = array_slice($this->get_all_startups(), $per_page, self::page_lenght);
     $startups_return = array();
     foreach($startups as $startup) {
       $startups_return[] = new Startup($startup['permalink']);
