@@ -9,7 +9,7 @@ class Home extends CI_Controller {
 	
 	function index(){
 	  $data['content'] = "";
-	  $this->load->view('main_template', $data);
+	  $this->load->view('home.php', $data);
 	}
 }
 ?>
