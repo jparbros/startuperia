@@ -7,6 +7,26 @@ class Dashboard_model extends CI_Model {
 		parent::__construct();
 	}
 	
+	function get_credits(){
+	  $this->db->select("credits");
+	  $this->db->from("user_profiles");
+    $this->db->where('user_id', $this->tank_auth->get_user_id());
+
+	  $query = $this->db->get();
+	   
+	  return $query->result();
+	}
+	
+	function get_stock_value(){
+    $this->db->select('SUM(shares * total_value) as stocks_value');
+    $this->db->from('stocks');
+    $this->db->where('stocks.users_id', $this->tank_auth->get_user_id());
+    
+    $query = $this->db->get();
+    //print $this->db->last_query();
+    return $query->result();
+	}
+	
 	function get_startups(){
 	  $this->db->select("SUM(id) as startups");
 	  $this->db->from("startups");

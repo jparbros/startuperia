@@ -12,6 +12,9 @@ class Dashboard extends CI_Controller {
 	  $content['example'] = "general";
 
 		$content['companies_owned'] = $this->dashboard_model->get_startups();
+		$content['credits'] = $this->dashboard_model->get_credits();
+		$content['stock_value'] = $this->dashboard_model->get_stock_value();
+		
 		$content['portfolio'] = $this->dashboard_model->portfolio();
 		$content['pending_orders'] = $this->dashboard_model->pending_orders();
 
