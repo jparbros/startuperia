@@ -123,11 +123,11 @@
           <tbody>
             <tr>
               <td class="value">Website</td>
-              <td class="full"><? echo $startup->homepage_url ?></td>
+              <td class="full"><a href="<? echo $startup->homepage_url ?>" target="_blank"><? echo $startup->homepage_url ?></a></td>
             </tr>
             <tr>
               <td class="value">Twitter</td>
-              <td class="full"><? echo $startup->twitter_username ?></td>
+              <td class="full"><a href="http://www.twitter.com/<? echo $startup->twitter_username ?>" target="_blank">@<? echo $startup->twitter_username ?></a></td>
             </tr>
             <tr>
               <td class="value">Category</td>
@@ -139,15 +139,15 @@
             </tr>
             <tr>
               <td class="value">Headquarters</td>
-              <td class="full"><? echo $startup->offices[0]['city'] ?>,<? echo $startup->offices[0]['state_code'] ?></td>
+              <td class="full"><? echo $startup->offices[0]['city'] ?>, <? echo $startup->offices[0]['state_code'] ?></td>
             </tr>
             <tr>
               <td class="value">CEO</td>
-              <td class="full"><? echo $startup->relationships[0]['person']['last_name'] ?>,<? echo $startup->relationships[0]['person']['first_name'] ?></td>
+              <td class="full"><? echo $startup->relationships[0]['person']['last_name'] ?>, <? echo $startup->relationships[0]['person']['first_name'] ?></td>
             </tr>
             <tr>
               <td class="value">Published Funding</td>
-              <td class="full">bla bla</td>
+              <td class="full">$<? echo number_format($startup->funding,2,'.',',') ?></td>
             </tr>
             <tr>
               <td style="width:100%">
@@ -172,7 +172,7 @@
     </div> <!-- .portlet-header -->
     
     <div class="portlet-content">
-      
+      <? echo $startup->long_description; ?>
     </div> <!-- .portlet-content -->      
   </div> <!-- .portlet -->
   
@@ -183,7 +183,11 @@
     </div> <!-- .portlet-header -->
 
     <div class="portlet-content">
-
+      <? $milestones = $startup->milestones ;
+       for ($i = 1; $i <= 5; $i++) {
+          $milestone = array_pop($milestones); ?>
+          <a href="<?echo $milestone['source_url']?>" target="_blank"><?echo $milestone['description']?></a></br>
+      <? } ?>
     </div> <!-- .portlet-content -->      
   </div> <!-- .portlet -->
   
@@ -194,7 +198,17 @@
     </div> <!-- .portlet-header -->
 
     <div class="portlet-content">
-  
+      <? $funding_rounds = $startup->funding_rounds ;
+       for ($i = 1; $i <= 5; $i++) {
+          $funding_round = array_pop($funding_rounds); 
+          if(!empty($funding_round['source_description'])) {
+            ?>
+              <a href="<?echo $funding_round['source_url']?>" target="_blank"><?echo $funding_round['source_description']?></a></br>
+            <?
+          }
+          ?>
+          
+      <? } ?>
     </div> <!-- .portlet-content -->      
   </div> <!-- .portlet -->
   
