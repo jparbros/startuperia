@@ -18,7 +18,7 @@ class Cron extends CI_Controller {
 	    $sell_volume = $this->Cron_model->get_sell_volume($startups[$x]->id);
 	    $difference = $buy_volume - $sell_volume;
 	    $change = 0.001 * $difference;
-	    $new_value = $startups[$x]->value_per_share - $change;
+	    $new_value = $startups[$x]->value_per_share + $change;
 	    if ($change!=0) {
 	      $this->Cron_model->set_new_value($startups[$x]->id, $new_value);
 	    };
