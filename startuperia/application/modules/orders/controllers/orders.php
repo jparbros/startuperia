@@ -3,7 +3,8 @@ class Orders extends CI_Controller {
 
 	function __construct()
 	{
-		parent::__construct();	
+		parent::__construct();
+		$this->load->library('is_login');
 		$this->load->model('orders_model');
 	}
 	

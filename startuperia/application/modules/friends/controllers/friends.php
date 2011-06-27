@@ -3,7 +3,8 @@ class Friends extends CI_Controller {
 
 	function __construct()
 	{
-		parent::__construct();	
+		parent::__construct();
+		$this->load->library('is_login');
 		$this->load->model('Friends_model');
 	}
 	
