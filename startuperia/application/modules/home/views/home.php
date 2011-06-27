@@ -29,7 +29,7 @@
           <div id='how_it_works'>
             <h2>How it Works</h2>
             <ol>
-              <li>Buy virtual shares of your favorite startups</li>
+              <li>Buy virtual shares of your favorite startups with virtual money</li>
               <li>Track their progress and milestones</li>
               <li>Gain virtual credits and reputation points for accurately predicting out-performers</li>
             </ol>
