@@ -23,13 +23,13 @@
           <img class='logo_stack' src='/images/logo_stack.png' />
         </div>
         <div id='call_to_action'>
-          <a href='<?php echo base_url()?>home/market_summary'>Explore the Site!</a>
+          <a href='<?php echo base_url()?>home/market_summary'>Make Your First Investment!</a>
         </div>
         <div id='details'>
           <div id='how_it_works'>
             <h2>How it Works</h2>
             <ol>
-              <li>Buy virtual shares of your favorite startups</li>
+              <li>Buy virtual shares of your favorite startups with virtual money</li>
               <li>Track their progress and milestones</li>
               <li>Gain virtual credits and reputation points for accurately predicting out-performers</li>
             </ol>
