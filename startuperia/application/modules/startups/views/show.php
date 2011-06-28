@@ -32,7 +32,7 @@
       </div>
     </div> <!-- .portlet-content -->
   </div> <!-- .portlet -->
-  
+
   <div class="floatLeft">
     <div id="dash_chart" class="portlet x8">
 
@@ -98,7 +98,7 @@
       </div> <!-- .portlet-content -->      
     </div> <!-- .portlet -->
   </div>
-  
+
   <div class="portlet x4" style="min-height: 300px;">
 
     <div class="portlet-header">
@@ -124,7 +124,7 @@
       <? } ?>
     </div> <!-- .portlet-content -->      
   </div> <!-- .portlet -->
-  
+
   <div class="portlet x4" style="min-height: 300px;">
 
     <div class="portlet-header">

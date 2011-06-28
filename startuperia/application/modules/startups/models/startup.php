@@ -19,7 +19,6 @@ class Startup extends CI_Model {
     if($startup_name) {
       $this->get_startup($startup_name);
     }
-    //$this->load->helper('inflector');
   }
   
   
@@ -48,17 +47,53 @@ class Startup extends CI_Model {
     return $startups_return;
   }
   
-  protected function http_get($url, $decode = true) {
-    $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_PORT, 80);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_BINARYTRANSFER, true);
-    curl_setopt($curl, CURLOPT_HEADER, 0);
-    curl_setopt($curl, CURLOPT_ENCODING , "gzip");
-    $respond = curl_exec($curl);
-    curl_close($curl);
-    return json_decode($respond, $decode);
+  protected function http_get($url, $cache = false) {
+    if($cache) {
+      $ttl = 86400;
+
+      $cache_path = dirname(__FILE__).'/../../../cache';
+
+      $cache_file   = sprintf('%s/%08X.dat', $cache_path, crc32($url));
+      $cache_exists = is_readable($cache_file);
+
+      if ($ttl && $cache_exists && (filemtime($cache_file) > (time() - $ttl))) 
+      {
+        return json_decode(file_get_contents($cache_file), true);
+      }
+
+      touch($cache_file);
+      clearstatcache();
+    }
+    
+    $c = curl_init();
+    curl_setopt($c, CURLOPT_URL, $url);
+    curl_setopt($c, CURLOPT_PORT, 80);
+    curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($c, CURLOPT_BINARYTRANSFER, true);
+    curl_setopt($c, CURLOPT_HEADER, 0);
+    curl_setopt($c, CURLOPT_ENCODING , "gzip");
+    
+    if ($cache) {
+      if ($cache_exists) {
+        curl_setopt($c, CURLOPT_TIMECONDITION, CURL_TIMECOND_IFMODSINCE);
+        curl_setopt($c, CURLOPT_TIMEVALUE, filemtime($cache_file));
+      }
+    }
+      
+    $content = curl_exec($c);
+
+    if ($cache) {
+      $status = curl_getinfo($c, CURLINFO_HTTP_CODE);
+
+      if ($cache_exists && ($status == 304)) { 
+        return file_get_contents($cache_file);
+      }
+
+      file_put_contents($cache_file, $content);
+      chmod($cache_file, 0644);
+    }
+
+    return json_decode($content, true);
   }
   
   protected function exist($startup_name) {
@@ -86,7 +121,7 @@ class Startup extends CI_Model {
   }
   
   public function get_all_startups() {
-    $startups = $this->http_get(self::list_entities_url . 'companies.js');
+    $startups = $this->http_get(self::list_entities_url . 'companies.js', true);
     $this->all_startups_size = sizeof($startups);
     return $startups;
   }
