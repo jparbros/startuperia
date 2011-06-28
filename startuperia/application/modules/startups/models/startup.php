@@ -105,11 +105,15 @@ class Startup extends CI_Model {
   
   public function long_description() {
     $overviews = explode('</p>', $this->overview);
-    $overview = '';
-    while(strlen($overview) <= 800) {
-      $overview .=  array_shift($overviews);
+    if(strlen($this->overview) > 800) {
+      $overview = '';
+      while(strlen($overview) <= 800) {
+        $overview .=  array_shift($overviews);
+      }
+      return $overview;
+    } else {
+      return $this->overview;
     }
-    return $overview;
   }
   
   public function day_everage($day, $month, $year){
