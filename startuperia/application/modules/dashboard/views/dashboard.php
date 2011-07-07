@@ -16,26 +16,26 @@
 						<td class="full">Companies Owned</td>
 					</tr>
 					<tr>
-						<td class="value">$
-						<?php 
+						<td class="value">
+						$<?php 
 						$startupcash = (isset($credits))?$credits:0;
-						echo number_format($startupcash,2,'.', ',');?></td>
+						echo number_format($startupcash,0,'.', ',');?></td>
 						<td class="full">StartupCash</td>
 					</tr>
 					<tr>
-						<td class="value">$
-						  <?php 
+						<td class="value">
+						  $<?php 
 						  $stockvalue = (isset($stocks_value))?$stocks_value:0;
-						 echo number_format($stockvalue,2,'.', ',');?>
+						 echo number_format($stockvalue,0,'.', ',');?>
 						</td>
 						<td class="full">Stock Value</td>
 					</tr>
 					<tr>
-						<td class="value">$
-						<?php 
+						<td class="value">
+						$<?php 
 						  $portfolio_value = $startupcash + $stockvalue;
 						  $portfolio_value = ($portfolio_value)?$portfolio_value:0;
-						  echo number_format($portfolio_value,2,'.', ',');
+						  echo number_format($portfolio_value,0,'.', ',');
 						  ?>
 						</td>
 						<td class="full">Portfolio Value</td>
@@ -49,7 +49,7 @@
 						    $gain_money = ($gain_money)? $gain_money : 0;
 						    $gain_full = $market_value/$order->value;
 					  } ?>
-						<td class="value">$ <?php echo number_format($gain_money,2,'.', ',')?></td>
+						<td class="value"> $<?php echo number_format($gain_money,0,'.', ',')?></td>
 						<td class="full">Gain ($)</td>
 					</tr>
 					<tr>

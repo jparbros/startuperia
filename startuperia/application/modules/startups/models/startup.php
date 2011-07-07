@@ -19,7 +19,6 @@ class Startup extends CI_Model {
     if($startup_name) {
       $this->get_startup($startup_name);
     }
-    //$this->load->helper('inflector');
   }
   
   
@@ -48,23 +47,55 @@ class Startup extends CI_Model {
     return $startups_return;
   }
   
-  protected function http_get($url, $decode = true) {
-    $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_PORT, 80);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_BINARYTRANSFER, true);
-    curl_setopt($curl, CURLOPT_HEADER, 0);
-    curl_setopt($curl, CURLOPT_ENCODING , "gzip");
-    $respond = curl_exec($curl);
-    curl_close($curl);
-    return json_decode($respond, $decode);
+  protected function http_get($url, $cache = false) {
+    if($cache) {
+      $ttl = 86400;
+
+      $cache_path = dirname(__FILE__).'/../../../cache';
+
+      $cache_file   = sprintf('%s/%08X.dat', $cache_path, crc32($url));
+      $cache_exists = is_readable($cache_file);
+
+      if ($ttl && $cache_exists && (filemtime($cache_file) > (time() - $ttl))) 
+      {
+        return json_decode(file_get_contents($cache_file), true);
+      }
+
+      touch($cache_file);
+      clearstatcache();
+    }
+    
+    $c = curl_init();
+    curl_setopt($c, CURLOPT_URL, $url);
+    curl_setopt($c, CURLOPT_PORT, 80);
+    curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($c, CURLOPT_BINARYTRANSFER, true);
+    curl_setopt($c, CURLOPT_HEADER, 0);
+    curl_setopt($c, CURLOPT_ENCODING , "gzip");
+    
+    if ($cache) {
+      if ($cache_exists) {
+        curl_setopt($c, CURLOPT_TIMECONDITION, CURL_TIMECOND_IFMODSINCE);
+        curl_setopt($c, CURLOPT_TIMEVALUE, filemtime($cache_file));
+      }
+    }
+      
+    $content = curl_exec($c);
+
+    if ($cache) {
+      $status = curl_getinfo($c, CURLINFO_HTTP_CODE);
+
+      if ($cache_exists && ($status == 304)) { 
+        return file_get_contents($cache_file);
+      }
+
+      file_put_contents($cache_file, $content);
+      chmod($cache_file, 0644);
+    }
+
+    return json_decode($content, true);
   }
   
-  /*
-  /* Check if the startup is in DB
-  /* Return a false or the record if exist
-  */
   protected function exist($startup_name) {
     $query = $this->db->get_where('startups',array('permalink' => $startup_name));
     if ($query->num_rows() > 0) {
@@ -90,7 +121,7 @@ class Startup extends CI_Model {
   }
   
   public function get_all_startups() {
-    $startups = $this->http_get(self::list_entities_url . 'companies.js');
+    $startups = $this->http_get(self::list_entities_url . 'companies.js', true);
     $this->all_startups_size = sizeof($startups);
     return $startups;
   }
@@ -109,28 +140,32 @@ class Startup extends CI_Model {
   
   public function long_description() {
     $overviews = explode('</p>', $this->overview);
-    $overview = '';
-    while(strlen($overview) <= 800) {
-      $overview .=  array_shift($overviews);
+    if(strlen($this->overview) > 800) {
+      $overview = '';
+      while(strlen($overview) <= 800) {
+        $overview .=  array_shift($overviews);
+      }
+      return $overview;
+    } else {
+      return $this->overview;
     }
-    return $overview;
   }
   
-  public function month_everage($month, $year){
+  public function day_everage($day, $month, $year){
     $where = array(
       'startups_id =' => $this->id, 
-      'created >' => $year.'-'.$month.'-01 00:00:00', 
-      'created <=' => $year.'-'.$month.'-31 23:59:59');
+      'created >' => $year.'-'.$month.'-'.$day.' 00:00:00', 
+      'created <=' => $year.'-'.$month.'-'.$day.' 23:59:59');
     $this->db->where($where);
     $this->db->select_avg('value_per_share');
     $query = $this->db->get('values_history');
     return (is_null($query->row(0)->value_per_share))? 0 : $query->row(0)->value_per_share;
   }
   
-  public function avg_last_five_months() {
+  public function avg_last_ten_days() {
     $avgs = array();
-    for ($i = 1; $i <= 5; $i++) {
-      $avgs[date("F", strtotime("-".$i." month") )] = $this->month_everage(date("m", strtotime("-".$i." month") ), date("Y", strtotime("-".$i." month") ));
+    for ($i = 0; $i <= 9; $i++) {
+      $avgs[date("d/m", strtotime("-".$i." day") )] = $this->day_everage(date("d", strtotime("-".$i." day") ),date("m", strtotime("-".$i." day") ), date("Y", strtotime("-".$i." day") ));
     }
     return array_reverse($avgs);
   }

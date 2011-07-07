@@ -4,6 +4,7 @@ class Startups extends CI_Controller {
   function __construct()
   {
     parent::__construct();
+    $this->load->library('is_login');
     $this->load->model('Startup');
   }
 
@@ -45,6 +46,12 @@ class Startups extends CI_Controller {
       redirect(base_url() . 'startups/show/'.$_POST['q_startup']);
     } else {
       
+    }
+  }
+  
+  function get_all_startups() {
+    for ($i = 1; $i <= 1000; $i++) {
+      $this->Startup->all_startups($i*20);
     }
   }
   

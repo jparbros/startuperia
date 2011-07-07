@@ -33,7 +33,7 @@
           <img class='logo_stack' src='/images/logo_stack.png' />
         </div>
         <div id='call_to_action'>
-          <a href='<?php echo base_url()?>home/market_summary'>Make Your First Investment!</a>
+          <a href='http://swdf.wufoo.com/forms/playvc-beta-signup/'>Make Your First Investment!</a>
         </div>
         <div id='details'>
           <div id='how_it_works'>
