@@ -9,6 +9,16 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/screen.css" type="text/css" media="screen" title="no title" charset="utf-8" />	
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/plugin.css" type="text/css" media="screen" title="no title" charset="utf-8" />	
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/custom.css" type="text/css" media="screen" title="no title" charset="utf-8" />		
+	<script type="text/javascript">
+    var _kmq = _kmq || [];
+    function _kms(u){
+      setTimeout(function(){
+        var s = document.createElement('script'); var f = document.getElementsByTagName('script')[0]; s.type = 'text/javascript'; s.async = true;
+        s.src = u; f.parentNode.insertBefore(s, f);
+      }, 1);
+    }
+    _kms('//i.kissmetrics.com/i.js');_kms('//doug1izaerwt3.cloudfront.net/cdf3377188bc1fee5da0ea7374fc25562becfcd0.1.js');
+  </script>
 </head>
 
 <body>
